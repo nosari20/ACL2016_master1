@@ -28,6 +28,12 @@ public class SpaceShipTest {
 
     }
 
+    @Test
+    public void TestNullConstructeur() {
+        SpaceShip ship2 = new SpaceShip(null);
+        assertEquals(null, ship2.getPosition());
+    }
+
     package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
