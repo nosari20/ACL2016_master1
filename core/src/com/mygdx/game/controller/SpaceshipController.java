@@ -28,10 +28,12 @@ public class SpaceshipController implements InputProcessor{
     public boolean keyDown(int keycode) {
         switch (keycode){
             case Input.Keys.LEFT:
+            case Input.Keys.Q:
                 this.spaceShip.setDirection(MoveableElement.Direction.WEST);
                 this.spaceShip.move();
                 break;
             case Input.Keys.RIGHT:
+            case Input.Keys.D:
                 this.spaceShip.setDirection(MoveableElement.Direction.EST);
                 this.spaceShip.move();
                 break;
@@ -45,9 +47,11 @@ public class SpaceshipController implements InputProcessor{
         MoveableElement.Direction dir = MoveableElement.Direction.NORTH;
         switch (keycode){
             case Input.Keys.LEFT:
+            case Input.Keys.Q:
                 dir = MoveableElement.Direction.WEST;
                 break;
             case Input.Keys.RIGHT:
+            case Input.Keys.D:
                 dir = MoveableElement.Direction.EST;
                 break;
         }
