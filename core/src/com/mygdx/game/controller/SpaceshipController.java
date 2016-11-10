@@ -29,18 +29,32 @@ public class SpaceshipController implements InputProcessor{
         switch (keycode){
             case Input.Keys.LEFT:
                 this.spaceShip.setDirection(MoveableElement.Direction.WEST);
+                this.spaceShip.move();
                 break;
             case Input.Keys.RIGHT:
                 this.spaceShip.setDirection(MoveableElement.Direction.EST);
+                this.spaceShip.move();
                 break;
         }
-        this.spaceShip.move();
+
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        this.spaceShip.stop();
+        MoveableElement.Direction dir = MoveableElement.Direction.NORTH;
+        switch (keycode){
+            case Input.Keys.LEFT:
+                dir = MoveableElement.Direction.WEST;
+                break;
+            case Input.Keys.RIGHT:
+                dir = MoveableElement.Direction.EST;
+                break;
+        }
+        if((dir.equals(this.spaceShip.getDirection()))){
+            this.spaceShip.stop();
+        }
+
         return false;
     }
 

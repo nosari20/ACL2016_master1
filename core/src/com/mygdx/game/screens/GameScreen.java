@@ -26,13 +26,14 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private SpaceshipController spaceshipController;
 
     public GameScreen(GameMain gameMain) {
+        this.world = new World();
         this.gm = gameMain;
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        viewport = new FitViewport(WORLD_WIDTH*ppux,WORLD_HEIGHT*ppuy, camera);
-        camera.position.set(((WORLD_WIDTH * ppux) / 2f), (WORLD_HEIGHT * ppuy) / 2f, 0);
+        viewport = new FitViewport(this.world.getSize().x*ppux,this.world.getSize().y*ppuy, camera);
+        camera.position.set(((this.world.getSize().x * ppux) / 2f), (this.world.getSize().y * ppuy) / 2f, 0);
         camera.update();
-        this.world = new World();
+
         this.spaceShip = world.getSpaceShip();
         this.spaceshipController = new SpaceshipController(this.spaceShip);
         Gdx.input.setInputProcessor(this.spaceshipController);
@@ -48,10 +49,10 @@ public class GameScreen implements Screen,ScreenGameConfig{
     public void render(float delta) {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-        Gdx.gl.glClearColor(255, 255, 255, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(spaceShip.getTexture(), spaceShip.getPosition().x*ppux,spaceShip.getPosition().y*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
+        batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x+(spaceShip.getSize().x/2))*ppux,(spaceShip.getPosition().y-(spaceShip.getSize().y/2))*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
         batch.end();
         world.update();
 

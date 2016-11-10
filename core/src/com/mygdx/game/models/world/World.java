@@ -10,6 +10,10 @@ import com.mygdx.game.models.elements.Spaceship;
  */
 public class World {
 
+    private final static int WORLD_WIDTH = 30;
+    private final static int WORLD_HEIGHT = 35;
+
+
     /**
      * The spaceship
      */
@@ -20,20 +24,36 @@ public class World {
      */
     private Vector2 size;
 
+
     /**
      * Default constructor
      */
-    private Spaceship spaceShip;
-
     public World(){
-        this.spaceShip = new Spaceship(new Vector2(7,15));
+        this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
+        this.spaceship = new Spaceship(new Vector2((this.size.x/2),(this.size.y/3)*2));
     }
 
+    /**
+     * Getter the world's spaceship instance
+     * @return
+     */
     public Spaceship getSpaceShip(){
-        return spaceShip;
+        return spaceship;
     }
+
+    /**
+     * Update the world
+     */
     public void update(){
-        spaceShip.update(Gdx.graphics.getDeltaTime());
+        spaceship.update(Gdx.graphics.getDeltaTime());
+    }
+
+    /**
+     * Getter for size
+     * @return size of the world
+     */
+    public Vector2 getSize(){
+        return new Vector2(this.size);
     }
 
 

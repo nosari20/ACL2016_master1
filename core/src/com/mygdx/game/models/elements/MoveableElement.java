@@ -166,4 +166,12 @@ public abstract class MoveableElement extends Element{
     }
 
 
+    /**
+     * Getter for direction
+     * @return direction
+     */
+    public Direction getDirection(){
+        return this.direction;
+    }
+
 }
