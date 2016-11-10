@@ -91,4 +91,5 @@ public class SpaceshipTest {
         assertTrue("NEW_Y = Y + SPEED",new_y==y+speed*10);
         assertTrue("NEW_X = X",new_x==x);
     }
+
 }

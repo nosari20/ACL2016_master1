@@ -1,11 +1,34 @@
 apply plugin: "java"
 
+
+
 sourceCompatibility = 1.6
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/" ]
 
+/**
+ * Test
+ */
+/*
+project.ext.mainClassName = "com.mygdx.game.desktop.DesktopLauncher"
+project.ext.assetsDir = new File("../core/assets");
+
+
+task test(dependsOn: classes, type: JavaExec) {
+    main = project.mainClassName
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.assetsDir
+    ignoreExitValue = true
+}
+*/
+
+
+
 
 eclipse.project {
     name = appName + "-core"
 }
+
+
