@@ -1,0 +1,1487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="acl_premiere" default="all">
+  
+  
+  <property file="acl_premiere.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.ashley/ashley/1.7.0/a7c4083c0a42027a3c03ba7ccecef6cbe1c5f0a4/ashley-1.7.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.ashley/ashley/1.7.0/761d4182b29162ddd88b5d49152b8d36acb628f4/ashley-1.7.0-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.box2dlights/box2dlights/1.4/3d77ad5b4164fb32fc67e2446e35911bb0aaf0bd/box2dlights-1.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.box2dlights/box2dlights/1.4/57a1f15112328706c648a430bd19574118e2d8f4/box2dlights-1.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-ai/1.8.0/ec30677d8ab1a8b8aa4b853c5f4e4b1361f50bf5/gdx-ai-1.8.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-ai/1.8.0/154b2fbb50894a944607cd74f7dba1073d31a967/gdx-ai-1.8.0-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.9.4/4e43ab54a25d53cc74895192210393880503459d/gdx-backend-gwt-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-gwt/1.9.4/f2804363b66d71ecd3c98cc9afbf2f55ca4f0dec/gdx-backend-gwt-1.9.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-headless/1.9.4/e985d7be223b56c9e03ad79bc573d038319cc62b/gdx-backend-headless-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.4/4c6c108a9dcbc07096de8594b93f9cab33856fe2/gdx-backend-lwjgl-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-gwt/1.9.4/e21bf4a4c310abdb55873b863241ec94e473d7cc/gdx-box2d-gwt-1.9.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-platform/1.9.4/905a9ed3017cd3917b7fbada5ece58c40fddcbca/gdx-box2d-platform-1.9.4-natives-desktop.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.4/98a0d25c9f0637fecac6e4aacf7287aa635964f5/gdx-box2d-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.4/9af0359c12dcbdfb737d7cbf0715f303b848d13c/gdx-box2d-1.9.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-bullet-platform/1.9.4/13190302e8721452ffb8ae242dba20f6195e8175/gdx-bullet-platform-1.9.4-natives-desktop.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-bullet/1.9.4/971a174538f313b9f975b8a6bbdf3aad04bb564d/gdx-bullet-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-controllers-desktop/1.9.4/327d033c54df7fcfedb4576b47cd2546a3634ba/gdx-controllers-desktop-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-controllers-gwt/1.9.4/5496486552b441966824ff0c979b89677642637d/gdx-controllers-gwt-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-controllers-gwt/1.9.4/860a98f54ef1903088312853140dba61744b8b1c/gdx-controllers-gwt-1.9.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-controllers-platform/1.9.4/5642c2faa67bc94d6c42718d50884f562249cfa7/gdx-controllers-platform-1.9.4-natives-desktop.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-controllers/1.9.4/d182ca36785df4226ef63009a3d96462952665c3/gdx-controllers-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-controllers/1.9.4/39fc69525b6e691d7ec1d6abbdd8230f1d15c6c4/gdx-controllers-1.9.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype-platform/1.9.4/4bced98798c82ba1cb947343bdd6297243ea09e3/gdx-freetype-platform-1.9.4-natives-desktop.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.4/8816dd669b8ca09e7d5e9575807e92c4318f708/gdx-freetype-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.9.4/8e93afecc287ab152179983fc1b5f65db4c2fa4c/gdx-platform-1.9.4-natives-desktop.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-tools/1.9.4/4c15cd85a5077bc7d13914be7cbd8dcce2d31725/gdx-tools-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.4/4b4b7962d1bc75af0438f5c81ec1010557bc9ee5/gdx-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.4/f0e4d245a67fc96707610a4260a325fa034c93d1/gdx-1.9.4-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.badlogicgames.jlayer/jlayer/1.0.1-gdx/7cca83cec5c1b2f011362f4d85aabd71a73b049d/jlayer-1.0.1-gdx.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-codeserver/2.6.0/c88f4d9a43a8161317a77c721a75aa3a78952e37/gwt-codeserver-2.6.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-dev/2.6.0/af3d9ad2fb8be30dc87fdcd6d9a373b2ab675802/gwt-dev-2.6.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.gwt:gwt-servlet:2.6.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-servlet/2.6.0/d1e40c23bf78192482ee76c93619a10b4ea649f7/gwt-servlet-2.6.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-user/2.6.0/8237d1bd37127188107388c8724be44a0e9f73ca/gwt-user-2.6.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/com.google.gwt/gwt-user/2.6.1/c078b1b8cc0281214b0eb458d2c283d039374fad/gwt-user-2.6.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/7ff832a6eb9ab6a767f1ade2b548092d0fa64795/jinput-platform-2.0.5-natives-linux.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/53f9c919f34d2ca9de8c51fc4e1e8282029a9232/jinput-platform-2.0.5-natives-osx.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/385ee093e01f587f30ee1c8a2ee7d408fd732e16/jinput-platform-2.0.5-natives-windows.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.java.jinput:jinput:2.0.5.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput/2.0.5/39c7796b469a600f72380316f6b1f11db6c2c7c4/jinput-2.0.5.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.java.jutils:jutils:1.0.0.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/net.java.jutils/jutils/1.0.0/e12fe1fda814bd348c1579329c86943d2cd3c6a6/jutils-1.0.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.jcraft:jorbis:0.0.17.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.json:json:20090211.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/json/json/20090211/json-20090211.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/d276cdf61fe2b516c7b7f4aa1b8dea91dbdc8d56/lwjgl-platform-2.9.2-natives-linux.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/d55b46b40b40249d627a83a7f7f22649709d70c3/lwjgl-platform-2.9.2-natives-osx.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/510c7d317f5e9e700b9cfaac5fd38bdebf0702e0/lwjgl-platform-2.9.2-natives-windows.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.2/a9d80fe5935c7a9149f6584d9777cfd471f65489/lwjgl-2.9.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath">
+    <pathelement location="C:/Users/aschmat/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl_util/2.9.2/4b9e37300a87799856e0bd15ed81663cdb6b0947/lwjgl_util-2.9.2.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module acl -->
+  
+  <dirname property="module.acl.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.acl" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.acl" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.acl" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.acl" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="acl.output.dir" value="${module.acl.basedir}/classes/production/acl"/>
+  <property name="acl.testoutput.dir" value="${module.acl.basedir}/classes/test/acl"/>
+  
+  <path id="acl.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="acl.module.production.classpath">
+    <path refid="${module.jdk.classpath.acl}"/>
+  </path>
+  
+  <path id="acl.runtime.production.module.classpath">
+    <pathelement location="${acl.output.dir}"/>
+  </path>
+  
+  <path id="acl.module.classpath">
+    <path refid="${module.jdk.classpath.acl}"/>
+    <pathelement location="${acl.output.dir}"/>
+  </path>
+  
+  <path id="acl.runtime.module.classpath">
+    <pathelement location="${acl.testoutput.dir}"/>
+    <pathelement location="${acl.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.acl">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.acl">
+    <patternset refid="excluded.from.module.acl"/>
+  </patternset>
+  
+  
+  <target name="compile.module.acl" depends="compile.module.acl.production,compile.module.acl.tests" description="Compile module acl"/>
+  
+  <target name="compile.module.acl.production" depends="register.custom.compilers" description="Compile module acl; production classes"/>
+  
+  <target name="compile.module.acl.tests" depends="register.custom.compilers,compile.module.acl.production" description="compile module acl; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.acl" description="cleanup module">
+    <delete dir="${acl.output.dir}"/>
+    <delete dir="${acl.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module core -->
+  
+  <dirname property="module.core.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.core" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.core" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.core" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.core" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="core.output.dir" value="${module.core.basedir}/classes/production/core"/>
+  <property name="core.testoutput.dir" value="${module.core.basedir}/classes/test/core"/>
+  
+  <path id="core.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="core.module.production.classpath">
+    <path refid="${module.jdk.classpath.core}"/>
+  </path>
+  
+  <path id="core.runtime.production.module.classpath">
+    <pathelement location="${core.output.dir}"/>
+  </path>
+  
+  <path id="core.module.classpath">
+    <path refid="${module.jdk.classpath.core}"/>
+    <pathelement location="${core.output.dir}"/>
+  </path>
+  
+  <path id="core.runtime.module.classpath">
+    <pathelement location="${core.testoutput.dir}"/>
+    <pathelement location="${core.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.core">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.core">
+    <patternset refid="excluded.from.module.core"/>
+  </patternset>
+  
+  
+  <target name="compile.module.core" depends="compile.module.core.production,compile.module.core.tests" description="Compile module core"/>
+  
+  <target name="compile.module.core.production" depends="register.custom.compilers" description="Compile module core; production classes"/>
+  
+  <target name="compile.module.core.tests" depends="register.custom.compilers,compile.module.core.production" description="compile module core; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.core" description="cleanup module">
+    <delete dir="${core.output.dir}"/>
+    <delete dir="${core.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module core_main -->
+  
+  <dirname property="module.core_main.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.core_main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.core_main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.core_main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.core_main" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="core_main.output.dir" value="${module.core_main.basedir}/core/build/classes/main"/>
+  <property name="core_main.testoutput.dir" value="${module.core_main.basedir}/core/build/classes/main"/>
+  
+  <path id="core_main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="core_main.module.production.classpath">
+    <path refid="${module.jdk.classpath.core_main}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  <path id="core_main.runtime.production.module.classpath">
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  <path id="core_main.module.classpath">
+    <path refid="${module.jdk.classpath.core_main}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  <path id="core_main.runtime.module.classpath">
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.core_main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.core_main">
+    <patternset refid="excluded.from.module.core_main"/>
+  </patternset>
+  
+  <path id="core_main.module.sourcepath">
+    <dirset dir="${module.core_main.basedir}/core">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.core_main" depends="compile.module.core_main.production,compile.module.core_main.tests" description="Compile module core_main"/>
+  
+  <target name="compile.module.core_main.production" depends="register.custom.compilers" description="Compile module core_main; production classes">
+    <mkdir dir="${core_main.output.dir}"/>
+    <javac2 destdir="${core_main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.core_main}/javac">
+      <compilerarg line="${compiler.args.core_main}"/>
+      <bootclasspath refid="core_main.module.bootclasspath"/>
+      <classpath refid="core_main.module.production.classpath"/>
+      <src refid="core_main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.core_main"/>
+    </javac2>
+    
+    <copy todir="${core_main.output.dir}">
+      <fileset dir="${module.core_main.basedir}/core/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.core_main.tests" depends="register.custom.compilers,compile.module.core_main.production" description="compile module core_main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.core_main" description="cleanup module">
+    <delete dir="${core_main.output.dir}"/>
+    <delete dir="${core_main.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module desktop -->
+  
+  <dirname property="module.desktop.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.desktop" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.desktop" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.desktop" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.desktop" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="desktop.output.dir" value="${module.desktop.basedir}/classes/production/desktop"/>
+  <property name="desktop.testoutput.dir" value="${module.desktop.basedir}/classes/test/desktop"/>
+  
+  <path id="desktop.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="desktop.module.production.classpath">
+    <path refid="${module.jdk.classpath.desktop}"/>
+  </path>
+  
+  <path id="desktop.runtime.production.module.classpath">
+    <pathelement location="${desktop.output.dir}"/>
+  </path>
+  
+  <path id="desktop.module.classpath">
+    <path refid="${module.jdk.classpath.desktop}"/>
+    <pathelement location="${desktop.output.dir}"/>
+  </path>
+  
+  <path id="desktop.runtime.module.classpath">
+    <pathelement location="${desktop.testoutput.dir}"/>
+    <pathelement location="${desktop.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.desktop">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.desktop">
+    <patternset refid="excluded.from.module.desktop"/>
+  </patternset>
+  
+  
+  <target name="compile.module.desktop" depends="compile.module.desktop.production,compile.module.desktop.tests" description="Compile module desktop"/>
+  
+  <target name="compile.module.desktop.production" depends="register.custom.compilers" description="Compile module desktop; production classes"/>
+  
+  <target name="compile.module.desktop.tests" depends="register.custom.compilers,compile.module.desktop.production" description="compile module desktop; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.desktop" description="cleanup module">
+    <delete dir="${desktop.output.dir}"/>
+    <delete dir="${desktop.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module html -->
+  
+  <dirname property="module.html.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.html" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.html" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.html" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.html" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="html.output.dir" value="${module.html.basedir}/classes/production/html"/>
+  <property name="html.testoutput.dir" value="${module.html.basedir}/classes/test/html"/>
+  
+  <path id="html.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="html.module.production.classpath">
+    <path refid="${module.jdk.classpath.html}"/>
+  </path>
+  
+  <path id="html.runtime.production.module.classpath">
+    <pathelement location="${html.output.dir}"/>
+  </path>
+  
+  <path id="html.module.classpath">
+    <path refid="${module.jdk.classpath.html}"/>
+    <pathelement location="${html.output.dir}"/>
+  </path>
+  
+  <path id="html.runtime.module.classpath">
+    <pathelement location="${html.testoutput.dir}"/>
+    <pathelement location="${html.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.html">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.html">
+    <patternset refid="excluded.from.module.html"/>
+  </patternset>
+  
+  
+  <target name="compile.module.html" depends="compile.module.html.production,compile.module.html.tests" description="Compile module html"/>
+  
+  <target name="compile.module.html.production" depends="register.custom.compilers" description="Compile module html; production classes"/>
+  
+  <target name="compile.module.html.tests" depends="register.custom.compilers,compile.module.html.production" description="compile module html; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.html" description="cleanup module">
+    <delete dir="${html.output.dir}"/>
+    <delete dir="${html.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module core_test -->
+  
+  <dirname property="module.core_test.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.core_test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.core_test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.core_test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.core_test" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="core_test.output.dir" value="undefined"/>
+  <property name="core_test.testoutput.dir" value="${module.core_test.basedir}/core/build/classes/test"/>
+  
+  <path id="core_test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="core_test.module.production.classpath">
+    <path refid="${module.jdk.classpath.core_test}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  <path id="core_test.runtime.production.module.classpath">
+    <path refid="core_main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  <path id="core_test.module.classpath">
+    <path refid="${module.jdk.classpath.core_test}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  <path id="core_test.runtime.module.classpath">
+    <pathelement location="${core_test.testoutput.dir}"/>
+    <path refid="core_main.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.core_test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.core_test">
+    <patternset refid="excluded.from.module.core_test"/>
+  </patternset>
+  
+  
+  <target name="compile.module.core_test" depends="compile.module.core_test.production,compile.module.core_test.tests" description="Compile module core_test"/>
+  
+  <target name="compile.module.core_test.production" depends="register.custom.compilers,compile.module.core_main" description="Compile module core_test; production classes"/>
+  
+  <target name="compile.module.core_test.tests" depends="register.custom.compilers,compile.module.core_test.production" description="compile module core_test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.core_test" description="cleanup module">
+    <delete dir="${core_test.output.dir}"/>
+    <delete dir="${core_test.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module desktop_main -->
+  
+  <dirname property="module.desktop_main.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.desktop_main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.desktop_main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.desktop_main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.desktop_main" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="desktop_main.output.dir" value="${module.desktop_main.basedir}/desktop/build/classes/main"/>
+  <property name="desktop_main.testoutput.dir" value="${module.desktop_main.basedir}/desktop/build/classes/main"/>
+  
+  <path id="desktop_main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="desktop_main.module.production.classpath">
+    <path refid="${module.jdk.classpath.desktop_main}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  <path id="desktop_main.runtime.production.module.classpath">
+    <pathelement location="${desktop_main.output.dir}"/>
+    <path refid="core_main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  <path id="desktop_main.module.classpath">
+    <path refid="${module.jdk.classpath.desktop_main}"/>
+    <pathelement location="${desktop_main.output.dir}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  <path id="desktop_main.runtime.module.classpath">
+    <pathelement location="${desktop_main.output.dir}"/>
+    <path refid="core_main.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.desktop_main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.desktop_main">
+    <patternset refid="excluded.from.module.desktop_main"/>
+  </patternset>
+  
+  <path id="desktop_main.module.sourcepath">
+    <dirset dir="${module.desktop_main.basedir}/desktop">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.desktop_main" depends="compile.module.desktop_main.production,compile.module.desktop_main.tests" description="Compile module desktop_main"/>
+  
+  <target name="compile.module.desktop_main.production" depends="register.custom.compilers,compile.module.core_main" description="Compile module desktop_main; production classes">
+    <mkdir dir="${desktop_main.output.dir}"/>
+    <javac2 destdir="${desktop_main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.desktop_main}/javac">
+      <compilerarg line="${compiler.args.desktop_main}"/>
+      <bootclasspath refid="desktop_main.module.bootclasspath"/>
+      <classpath refid="desktop_main.module.production.classpath"/>
+      <src refid="desktop_main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.desktop_main"/>
+    </javac2>
+    
+    <copy todir="${desktop_main.output.dir}">
+      <fileset dir="${module.desktop_main.basedir}/desktop/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.desktop_main.tests" depends="register.custom.compilers,compile.module.desktop_main.production" description="compile module desktop_main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.desktop_main" description="cleanup module">
+    <delete dir="${desktop_main.output.dir}"/>
+    <delete dir="${desktop_main.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module html_main -->
+  
+  <dirname property="module.html_main.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.html_main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.html_main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.html_main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.html_main" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="html_main.output.dir" value="${module.html_main.basedir}/html/build/classes/main"/>
+  <property name="html_main.testoutput.dir" value="${module.html_main.basedir}/html/build/classes/main"/>
+  
+  <path id="html_main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="html_main.module.production.classpath">
+    <path refid="${module.jdk.classpath.html_main}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+  </path>
+  
+  <path id="html_main.runtime.production.module.classpath">
+    <pathelement location="${html_main.output.dir}"/>
+    <path refid="core_main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-servlet:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+  </path>
+  
+  <path id="html_main.module.classpath">
+    <path refid="${module.jdk.classpath.html_main}"/>
+    <pathelement location="${html_main.output.dir}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+  </path>
+  
+  <path id="html_main.runtime.module.classpath">
+    <pathelement location="${html_main.output.dir}"/>
+    <path refid="core_main.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-servlet:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.html_main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.html_main">
+    <patternset refid="excluded.from.module.html_main"/>
+  </patternset>
+  
+  <path id="html_main.module.sourcepath">
+    <dirset dir="${module.html_main.basedir}/html">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.html_main" depends="compile.module.html_main.production,compile.module.html_main.tests" description="Compile module html_main"/>
+  
+  <target name="compile.module.html_main.production" depends="register.custom.compilers,compile.module.core_main" description="Compile module html_main; production classes">
+    <mkdir dir="${html_main.output.dir}"/>
+    <javac2 destdir="${html_main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.html_main}/javac">
+      <compilerarg line="${compiler.args.html_main}"/>
+      <bootclasspath refid="html_main.module.bootclasspath"/>
+      <classpath refid="html_main.module.production.classpath"/>
+      <src refid="html_main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.html_main"/>
+    </javac2>
+    
+    <copy todir="${html_main.output.dir}">
+      <fileset dir="${module.html_main.basedir}/html/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.html_main.tests" depends="register.custom.compilers,compile.module.html_main.production" description="compile module html_main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.html_main" description="cleanup module">
+    <delete dir="${html_main.output.dir}"/>
+    <delete dir="${html_main.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module desktop_test -->
+  
+  <dirname property="module.desktop_test.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.desktop_test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.desktop_test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.desktop_test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.desktop_test" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="desktop_test.output.dir" value="undefined"/>
+  <property name="desktop_test.testoutput.dir" value="${module.desktop_test.basedir}/desktop/build/classes/test"/>
+  
+  <path id="desktop_test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="desktop_test.module.production.classpath">
+    <path refid="${module.jdk.classpath.desktop_test}"/>
+    <pathelement location="${desktop_main.output.dir}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  <path id="desktop_test.runtime.production.module.classpath">
+    <path refid="desktop_main.runtime.production.module.classpath"/>
+    <path refid="core_main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  <path id="desktop_test.module.classpath">
+    <path refid="${module.jdk.classpath.desktop_test}"/>
+    <pathelement location="${desktop_main.output.dir}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  <path id="desktop_test.runtime.module.classpath">
+    <pathelement location="${desktop_test.testoutput.dir}"/>
+    <path refid="desktop_main.runtime.module.classpath"/>
+    <path refid="core_main.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-tools:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-platform:natives-desktop:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl_util:2.9.2.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.jlayer:jlayer:1.0.1-gdx.classpath"/>
+    <path refid="library.gradle:_org.jcraft:jorbis:0.0.17.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-headless:1.9.4.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2.classpath"/>
+    <path refid="library.gradle:_org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jutils:jutils:1.0.0.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-linux:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-windows:2.0.5.classpath"/>
+    <path refid="library.gradle:_net.java.jinput:jinput-platform:natives-osx:2.0.5.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.desktop_test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.desktop_test">
+    <patternset refid="excluded.from.module.desktop_test"/>
+  </patternset>
+  
+  
+  <target name="compile.module.desktop_test" depends="compile.module.desktop_test.production,compile.module.desktop_test.tests" description="Compile module desktop_test"/>
+  
+  <target name="compile.module.desktop_test.production" depends="register.custom.compilers,compile.module.desktop_main,compile.module.core_main" description="Compile module desktop_test; production classes"/>
+  
+  <target name="compile.module.desktop_test.tests" depends="register.custom.compilers,compile.module.desktop_test.production" description="compile module desktop_test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.desktop_test" description="cleanup module">
+    <delete dir="${desktop_test.output.dir}"/>
+    <delete dir="${desktop_test.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module html_test -->
+  
+  <dirname property="module.html_test.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.html_test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.html_test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.html_test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.html_test" value="-encoding UTF-8 -source 1.6 -target 1.6 ${compiler.args}"/>
+  
+  <property name="html_test.output.dir" value="undefined"/>
+  <property name="html_test.testoutput.dir" value="${module.html_test.basedir}/html/build/classes/test"/>
+  
+  <path id="html_test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="html_test.module.production.classpath">
+    <path refid="${module.jdk.classpath.html_test}"/>
+    <pathelement location="${html_main.output.dir}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+  </path>
+  
+  <path id="html_test.runtime.production.module.classpath">
+    <path refid="html_main.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/html/src"/>
+    <pathelement location="${basedir}/html/src/test/java"/>
+    <path refid="core_main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-servlet:2.6.0.classpath"/>
+  </path>
+  
+  <path id="html_test.module.classpath">
+    <path refid="${module.jdk.classpath.html_test}"/>
+    <pathelement location="${html_main.output.dir}"/>
+    <pathelement location="${core_main.output.dir}"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+  </path>
+  
+  <path id="html_test.runtime.module.classpath">
+    <pathelement location="${html_test.testoutput.dir}"/>
+    <path refid="html_main.runtime.module.classpath"/>
+    <pathelement location="${basedir}/html/src"/>
+    <pathelement location="${basedir}/html/src/test/java"/>
+    <path refid="core_main.runtime.module.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-backend-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-box2d-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:sources:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.box2dlights:box2dlights:1.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-controllers-gwt:sources:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:sources:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.ashley:ashley:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:sources:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-ai:1.8.0.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-bullet:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.badlogicgames.gdx:gdx-freetype:1.9.4.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.1.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_javax.validation:validation-api:sources:1.0.0.ga.classpath"/>
+    <path refid="library.gradle:_org.json:json:20090211.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-codeserver:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-dev:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-user:2.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.gwt:gwt-servlet:2.6.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.html_test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.html_test">
+    <patternset refid="excluded.from.module.html_test"/>
+  </patternset>
+  
+  
+  <target name="compile.module.html_test" depends="compile.module.html_test.production,compile.module.html_test.tests" description="Compile module html_test"/>
+  
+  <target name="compile.module.html_test.production" depends="register.custom.compilers,compile.module.html_main,compile.module.core_main" description="Compile module html_test; production classes"/>
+  
+  <target name="compile.module.html_test.tests" depends="register.custom.compilers,compile.module.html_test.production" description="compile module html_test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.html_test" description="cleanup module">
+    <delete dir="${html_test.output.dir}"/>
+    <delete dir="${html_test.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.acl, clean.module.core, clean.module.core_main, clean.module.desktop, clean.module.html, clean.module.core_test, clean.module.desktop_main, clean.module.html_main, clean.module.desktop_test, clean.module.html_test" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.acl, compile.module.core, compile.module.core_main, compile.module.desktop, compile.module.html, compile.module.core_test, compile.module.desktop_main, compile.module.html_main, compile.module.desktop_test, compile.module.html_test" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
