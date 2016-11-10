@@ -28,4 +28,80 @@ public class SpaceShipTest {
 
     }
 
+    package com.mygdx.game.models.elements;
+
+import com.badlogic.gdx.math.Vector2;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+    /**
+     * Created by brice on 10/11/16.
+     */
+    public class SpaceShipTest {
+        SpaceShip ship;
+        @Before
+        public void setUp() throws Exception {
+            ship = new SpaceShip(new Vector2(7,15));
+        }
+
+        @Test
+        public void updateTestEAST(){
+            ship.setDirection(EAST);
+            int x = ship.getPosition().x;
+            int y = ship.getPosition().y;
+            ship.move();
+            ship.update(10);
+            int new_x = ship.getPosition().x;
+            int new_y = ship.getPosition().y;
+            int speed = getSpeed();
+            assertTrue("NEW_Y = Y",y==new_y);
+            assertTrue("NEW_X = X + SPEED"new_x==x+speed*10);
+        }
+
+        @Test
+        public void updateTestWEST(){
+            ship.setDirection(WEST);
+            int x = ship.getPosition().x;
+            int y = ship.getPosition().y;
+            ship.move();
+            ship.update(10);
+            int new_x = ship.getPosition().x;
+            int new_y = ship.getPosition().y;
+            int speed = getSpeed();
+            assertTrue("NEW_Y = Y",y==new_y);
+            assertTrue("NEW_X = X - SPEED"new_x==x-speed*10);
+        }
+
+        @Test
+        public void updateTestNORTH(){
+            ship.setDirection(NORTH);
+            int x = ship.getPosition().x;
+            int y = ship.getPosition().y;
+            ship.move();
+            ship.update(10);
+            int new_x = ship.getPosition().x;
+            int new_y = ship.getPosition().y;
+            int speed = getSpeed();
+            assertTrue("NEW_Y = Y - SPEED",new_y==y - speed*10);
+            assertTrue("NEW_X = X "new_x==x);
+        }
+
+        @Test
+        public void updateTestEAST(){
+            ship.setDirection(EAST);
+            int x = ship.getPosition().x;
+            int y = ship.getPosition().y;
+            ship.move();
+            ship.update(10);
+            int new_x = ship.getPosition().x;
+            int new_y = ship.getPosition().y;
+            int speed = getSpeed();
+            assertTrue("NEW_Y = Y + SPEED",new_y==y+speed*10);
+            assertTrue("NEW_X = X"new_x==x);
+        }
+
+    }
+
 }
