@@ -28,6 +28,7 @@ public abstract class Element{
      */
     public Element(Vector2 position) {
         this.position = new Vector2(position);
+        this.size = new Vector2(5,5);
     }
 
 
@@ -74,7 +75,7 @@ public abstract class Element{
         return this.position.toString();
     }
 
-    public abstract Texture getTexture(float time);
+    public abstract Texture getTexture();
 
 
 }

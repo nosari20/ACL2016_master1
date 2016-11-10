@@ -8,9 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.GameMain;
-import com.mygdx.game.controller.GameListener;
-import com.mygdx.game.models.World;
-import com.mygdx.game.models.elements.SpaceShip;
+import com.mygdx.game.models.elements.Spaceship;
+import com.mygdx.game.models.world.World;
+
 
 /**
  * Created by aschmat on 08/11/2016.
@@ -21,8 +21,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private OrthographicCamera camera;
     private Viewport viewport;
     private World world;
-    private SpaceShip spaceShip;
-    private GameListener gameListener;
+    private Spaceship spaceShip;
 
     public GameScreen(GameMain gameMain) {
         this.gm = gameMain;
@@ -33,8 +32,6 @@ public class GameScreen implements Screen,ScreenGameConfig{
         camera.update();
         this.world = new World();
         this.spaceShip = world.getSpaceShip();
-        this.gameListener = new GameListener(spaceShip);
-        Gdx.input.setInputProcessor(this.gameListener);
     }
 
     @Override
@@ -49,7 +46,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
         Gdx.gl.glClearColor(255, 255, 255, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(spaceShip.getTexture(), spaceShip.getPosX()*ppux,spaceShip.getPosY()*ppuy, spaceShip.getLength()*ppux,spaceShip.getWidth()*ppuy);
+        batch.draw(spaceShip.getTexture(), spaceShip.getPosition().x*ppux,spaceShip.getPosition().y*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
         batch.end();
         world.update();
     }

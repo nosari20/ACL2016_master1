@@ -1,7 +1,6 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.models.Changeable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * Created by ACH02 on 08/11/2016.
  */
-public abstract class MoveableElement extends Element implements Changeable {
+public abstract class MoveableElement extends Element{
 
     /**
      * Direction enum
@@ -114,6 +113,13 @@ public abstract class MoveableElement extends Element implements Changeable {
 
     }
 
+    /**
+     * Getter for speed
+     * @return speed
+     */
+    public int getSpeed(){
+        return this.speed;
+    }
     /**
      * Setter for speed
      * @param speed
