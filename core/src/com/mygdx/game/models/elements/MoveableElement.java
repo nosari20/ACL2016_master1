@@ -165,6 +165,9 @@ public abstract class MoveableElement extends Element{
         this.isMoving = false;
     }
 
+    public boolean isMoving(){
+        return this.isMoving;
+    }
 
     /**
      * Getter for direction
