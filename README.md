@@ -34,6 +34,12 @@ gradlew test
 gradlew desktop:run
 ```
 
+### TESTS
+
+```
+gradlew test:test
+````
+
 ### CREATE JAR FILE
 
 ```
