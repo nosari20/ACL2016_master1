@@ -1,7 +1,9 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static com.mygdx.game.models.elements.MoveableElement.Direction.*;
 import static org.junit.Assert.*;
@@ -16,12 +18,13 @@ public class SpaceshipTest {
         ship = new Spaceship(new Vector2(7,15));
     }
 
+    @Rule
+    public ExpectedException thrown= ExpectedException.none();
+
     @Test
     public void TestValeurConstructeur() {
         assertEquals(new Vector2(7,15), ship.getPosition());
         assertEquals(ship.getSpeed(), 12f, 0.001);
-        /*assertEquals(ship.getWidth(), 3, 0.001);
-        assertEquals(ship.getLength(), 3, 0.001);*/
         assertEquals(ship.isMoving(), false);
         assertEquals(ship.getDirection(), MoveableElement.Direction.NORTH);
 
@@ -29,8 +32,8 @@ public class SpaceshipTest {
 
     @Test
     public void TestNullConstructeur() {
+        thrown.expect(NullPointerException.class);
         Spaceship ship2 = new Spaceship(null);
-        assertEquals(null, ship2.getPosition());
     }
 
     @Test
