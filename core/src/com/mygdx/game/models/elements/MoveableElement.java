@@ -94,23 +94,23 @@ public abstract class MoveableElement extends Element{
      * Update the elements properties with the controler depending on the delta time
      */
     public void update(float delta){
-
-        double distance = this.speed * (delta/1000);
-        switch (this.direction){
-            case NORTH :
-                this.setPosition(this.getPosition().set(this.getPosition().x,this.getPosition().y - (float)distance));
-                break;
-            case SOUTH:
-                this.setPosition(this.getPosition().set(this.getPosition().x,this.getPosition().y + (float)distance));
-                break;
-            case EST:
-                this.setPosition(this.getPosition().set(this.getPosition().x + (float)distance,this.getPosition().y));
-                break;
-            case WEST:
-                this.setPosition(this.getPosition().set(this.getPosition().x - (float)distance,this.getPosition().y));
-                break;
+        if(isMoving) {
+            double distance = this.speed * (delta);
+            switch (this.direction) {
+                case NORTH:
+                    this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y - (float) distance));
+                    break;
+                case SOUTH:
+                    this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y + (float) distance));
+                    break;
+                case EST:
+                    this.setPosition(this.getPosition().set(this.getPosition().x + (float) distance, this.getPosition().y));
+                    break;
+                case WEST:
+                    this.setPosition(this.getPosition().set(this.getPosition().x - (float) distance, this.getPosition().y));
+                    break;
+            }
         }
-
     }
 
     /**

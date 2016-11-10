@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.GameMain;
+import com.mygdx.game.controller.SpaceshipController;
 import com.mygdx.game.models.elements.Spaceship;
 import com.mygdx.game.models.world.World;
 
@@ -22,6 +23,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private Viewport viewport;
     private World world;
     private Spaceship spaceShip;
+    private SpaceshipController spaceshipController;
 
     public GameScreen(GameMain gameMain) {
         this.gm = gameMain;
@@ -32,6 +34,9 @@ public class GameScreen implements Screen,ScreenGameConfig{
         camera.update();
         this.world = new World();
         this.spaceShip = world.getSpaceShip();
+        this.spaceshipController = new SpaceshipController(this.spaceShip);
+        Gdx.input.setInputProcessor(this.spaceshipController);
+
     }
 
     @Override
@@ -49,6 +54,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
         batch.draw(spaceShip.getTexture(), spaceShip.getPosition().x*ppux,spaceShip.getPosition().y*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
         batch.end();
         world.update();
+
     }
 
     @Override
