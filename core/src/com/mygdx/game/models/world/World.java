@@ -4,7 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Element;
+import com.mygdx.game.models.elements.Missile;
+import com.mygdx.game.models.elements.MoveableElement;
 import com.mygdx.game.models.elements.Spaceship;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Acherus on 09/11/2016.
@@ -13,7 +18,7 @@ public class World {
 
     private final static int WORLD_WIDTH = 30;
     private final static int WORLD_HEIGHT = 35;
-
+    private List<Element> elements;
 
     /**
      * The spaceship
@@ -38,6 +43,7 @@ public class World {
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
         this.spaceship = new Spaceship(new Vector2((this.size.x/2),5));
         this.alien = new Alien(new Vector2((this.size.x/2),this.size.y));
+        this.elements = new ArrayList<Element>();
     }
 
     /**
@@ -62,6 +68,10 @@ public class World {
     public void update(){
         spaceship.update(Gdx.graphics.getDeltaTime());
         alien.update(Gdx.graphics.getDeltaTime());
+        for(Element e: elements){
+            if(e instanceof MoveableElement)
+                ((MoveableElement)e).update(Gdx.graphics.getDeltaTime());
+        }
     }
 
     /**
@@ -73,5 +83,13 @@ public class World {
     }
 
 
+    public void addMissile() {
+        this.elements.add(new Missile(new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH ));
+
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
 }
 

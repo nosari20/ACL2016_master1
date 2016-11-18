@@ -1,9 +1,11 @@
 package com.mygdx.game.controller;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.mygdx.game.models.elements.MoveableElement;
 import com.mygdx.game.models.elements.Spaceship;
+import com.mygdx.game.models.world.World;
 
 /**
  * Created on 10/11/2016.
@@ -15,13 +17,15 @@ public class SpaceshipController implements InputProcessor{
      * Vaisseau
      */
     private Spaceship spaceShip;
+    private World world;
 
     /**
      * Constructeur recupere le vaisseau du monde
-     * @param spaceShip
+     * @param world
      */
-    public SpaceshipController(Spaceship spaceShip){
-        this.spaceShip = spaceShip;
+    public SpaceshipController(World world){
+        this.world = world;
+        this.spaceShip = this.world.getSpaceShip();
     }
 
     @Override
@@ -36,6 +40,10 @@ public class SpaceshipController implements InputProcessor{
             case Input.Keys.D:
                 this.spaceShip.setDirection(MoveableElement.Direction.EST);
                 this.spaceShip.move();
+                break;
+            case Input.Keys.SPACE:
+                Gdx.app.log("Test", "Launched missile !");
+                this.world.addMissile();
                 break;
         }
 

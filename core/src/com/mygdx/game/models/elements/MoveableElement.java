@@ -94,6 +94,16 @@ public abstract class MoveableElement extends Element{
         this.isMoving = false;
     }
     /**
+     * Constructor with all attribute
+     * @param position
+     */
+    public MoveableElement(Vector2 position, Vector2 size, int speed, Direction direction) {
+        super(position, size);
+        this.speed = speed;
+        this.direction = direction;
+        this.isMoving = false;
+    }
+    /**
      * Move the Element
      * @param direction
      */

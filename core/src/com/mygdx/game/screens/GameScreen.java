@@ -10,8 +10,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.GameMain;
 import com.mygdx.game.controller.SpaceshipController;
 import com.mygdx.game.models.elements.Alien;
+import com.mygdx.game.models.elements.Element;
 import com.mygdx.game.models.elements.Spaceship;
 import com.mygdx.game.models.world.World;
+
+import java.util.List;
 
 
 /**
@@ -26,6 +29,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private Spaceship spaceShip;
     private Alien alien;
     private SpaceshipController spaceshipController;
+    private List<Element> elements;
 
     public GameScreen(GameMain gameMain) {
         this.world = new World();
@@ -38,7 +42,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
 
         this.spaceShip = world.getSpaceShip();
         this.alien = world.getAlien();
-        this.spaceshipController = new SpaceshipController(this.spaceShip);
+        this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
 
     }
@@ -50,13 +54,16 @@ public class GameScreen implements Screen,ScreenGameConfig{
 
     @Override
     public void render(float delta) {
+        this.elements = world.getElements();
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x+(spaceShip.getSize().x/2))*ppux,(spaceShip.getPosition().y-(spaceShip.getSize().y/2))*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
-        batch.draw(alien.getTexture(), (alien.getPosition().x+(alien.getSize().x/2))*ppux,(alien.getPosition().y-(alien.getSize().y/2))*ppuy, alien.getSize().x*ppux,alien.getSize().y*ppuy);
+        batch.draw(alien.getTexture(), (alien.getPosition().x + (alien.getSize().x / 2)) * ppux, (alien.getPosition().y - (alien.getSize().y / 2)) * ppuy, alien.getSize().x * ppux, alien.getSize().y * ppuy);
+        for(Element e : elements)
+            batch.draw(e.getTexture(), (e.getPosition().x + (e.getSize().x / 2)) * ppux, (e.getPosition().y - (e.getSize().y / 2)) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
         batch.end();
         world.update();
 
