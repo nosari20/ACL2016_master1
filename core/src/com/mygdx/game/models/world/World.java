@@ -2,6 +2,7 @@ package com.mygdx.game.models.world;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Element;
 import com.mygdx.game.models.elements.Spaceship;
 
@@ -20,6 +21,11 @@ public class World {
     private Spaceship spaceship;
 
     /**
+     * The alien
+     */
+    private Alien alien;
+
+    /**
      * The size of the world
      */
     private Vector2 size;
@@ -30,7 +36,8 @@ public class World {
      */
     public World(){
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
-        this.spaceship = new Spaceship(new Vector2((this.size.x/2),(this.size.y/3)*2));
+        this.spaceship = new Spaceship(new Vector2((this.size.x/2),5));
+        this.alien = new Alien(new Vector2((this.size.x/2),this.size.y));
     }
 
     /**
@@ -42,10 +49,19 @@ public class World {
     }
 
     /**
+     * Getter the world's alien instance
+     * @return
+     */
+    public Alien getAlien(){
+        return alien;
+    }
+
+    /**
      * Update the world
      */
     public void update(){
         spaceship.update(Gdx.graphics.getDeltaTime());
+        alien.update(Gdx.graphics.getDeltaTime());
     }
 
     /**

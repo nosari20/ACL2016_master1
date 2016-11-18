@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.GameMain;
 import com.mygdx.game.controller.SpaceshipController;
+import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Spaceship;
 import com.mygdx.game.models.world.World;
 
@@ -23,6 +24,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private Viewport viewport;
     private World world;
     private Spaceship spaceShip;
+    private Alien alien;
     private SpaceshipController spaceshipController;
 
     public GameScreen(GameMain gameMain) {
@@ -35,6 +37,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
         camera.update();
 
         this.spaceShip = world.getSpaceShip();
+        this.alien = world.getAlien();
         this.spaceshipController = new SpaceshipController(this.spaceShip);
         Gdx.input.setInputProcessor(this.spaceshipController);
 
@@ -53,6 +56,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x+(spaceShip.getSize().x/2))*ppux,(spaceShip.getPosition().y-(spaceShip.getSize().y/2))*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
+        batch.draw(alien.getTexture(), (alien.getPosition().x+(alien.getSize().x/2))*ppux,(alien.getPosition().y-(alien.getSize().y/2))*ppuy, alien.getSize().x*ppux,alien.getSize().y*ppuy);
         batch.end();
         world.update();
 

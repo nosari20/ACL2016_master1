@@ -54,7 +54,7 @@ public abstract class MoveableElement extends Element{
     /**
      * Element's moving state
      */
-    private boolean isMoving;
+    protected boolean isMoving;
     
 
 
@@ -108,10 +108,10 @@ public abstract class MoveableElement extends Element{
         if(isMoving) {
             double distance = this.speed * (delta);
             switch (this.direction) {
-                case NORTH:
+                case SOUTH:
                     this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y - (float) distance));
                     break;
-                case SOUTH:
+                case NORTH:
                     this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y + (float) distance));
                     break;
                 case EST:

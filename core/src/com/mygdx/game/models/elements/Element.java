@@ -75,6 +75,10 @@ public abstract class Element{
         return this.position.toString();
     }
 
+    /**
+     * Getter for texture
+     * @return texture
+     */
     public abstract Texture getTexture();
 
 

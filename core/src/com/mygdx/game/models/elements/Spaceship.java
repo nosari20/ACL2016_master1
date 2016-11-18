@@ -31,11 +31,10 @@ public class Spaceship extends MoveableElement {
 
     /**
      * Getter for texture
-     * @param time
      * @return
      */
     public Texture getTexture(){
-        return TexturesRepository.getInstance().getSpaceShip();
+        return TexturesRepository.getInstance().getSpaceship();
     }
 
 }
