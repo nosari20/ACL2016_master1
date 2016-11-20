@@ -41,8 +41,8 @@ public class World {
      */
     public World(){
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
-        this.spaceship = new Spaceship(new Vector2((this.size.x/2),5));
-        this.alien = new Alien(new Vector2((this.size.x/2),this.size.y));
+        this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
+        this.alien = new Alien(this,new Vector2((this.size.x/2),this.size.y));
         this.elements = new ArrayList<Element>();
     }
 
@@ -84,12 +84,14 @@ public class World {
 
 
     public void addMissile() {
-        this.elements.add(new Missile(new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH ));
+        this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH ));
 
     }
 
     public List<Element> getElements() {
         return elements;
     }
+
+
 }
 

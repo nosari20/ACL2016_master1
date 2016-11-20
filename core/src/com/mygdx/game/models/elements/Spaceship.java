@@ -2,6 +2,7 @@ package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.models.world.World;
 import com.mygdx.game.ressources.TexturesRepository;
 
 /**
@@ -16,8 +17,8 @@ public class Spaceship extends MoveableElement {
      *
      * @param position
      */
-    public Spaceship(Vector2 position) {
-        super(position);
+    public Spaceship(World w, Vector2 position) {
+        super(w, position);
         this.setSpeed(SPACESHIP_SPEED);}
 
     /**

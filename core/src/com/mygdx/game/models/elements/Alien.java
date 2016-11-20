@@ -3,6 +3,7 @@ package com.mygdx.game.models.elements;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
+import com.mygdx.game.models.world.World;
 import com.mygdx.game.ressources.TexturesRepository;
 
 /**
@@ -19,8 +20,8 @@ public class Alien  extends MoveableElement {
      *
      * @param position
      */
-    public Alien(Vector2 position) {
-        super(position, new Vector2(2,3), ALIEN_SPEED, Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
+    public Alien(World w, Vector2 position) {
+        super(w, position, new Vector2(2,3), ALIEN_SPEED, Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
         this.move();
         this.changeDirection = true;
     }
