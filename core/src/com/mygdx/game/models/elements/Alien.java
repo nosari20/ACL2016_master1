@@ -1,5 +1,6 @@
 package com.mygdx.game.models.elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
@@ -11,9 +12,12 @@ import com.mygdx.game.ressources.TexturesRepository;
  */
 public class Alien  extends MoveableElement {
 
-    private final static int ALIEN_SPEED = 12;
+    private final static int ALIEN_SPEED = 3;
 
     private boolean changeDirection;
+
+    private int nb_frame;
+
 
     /**
      * Default constructor
@@ -49,7 +53,6 @@ public class Alien  extends MoveableElement {
      */
     public void update(float delta){
 
-
         if(changeDirection){
             changeDirection = false;
             Timer.schedule(new Timer.Task() {
@@ -72,13 +75,7 @@ public class Alien  extends MoveableElement {
                 case 4:
                     break;
             }
-
-
         }
-
-
-
-
 
         if(isMoving) {
             double distance = this.getSpeed() * (delta);
@@ -96,6 +93,11 @@ public class Alien  extends MoveableElement {
                     this.setPosition(this.getPosition().set(this.getPosition().x - (float) distance, this.getPosition().y));
                     break;
             }
+        }
+
+        nb_frame++;
+        if((nb_frame%120 ==0)){
+            this.world.addMissileAlien();
         }
     }
 }

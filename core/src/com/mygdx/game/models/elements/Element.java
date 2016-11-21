@@ -26,7 +26,7 @@ public abstract class Element{
     /**
      * World's instance
      */
-    private World world;
+    protected World world;
 
 
 

@@ -2,11 +2,7 @@ package com.mygdx.game.models.world;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.models.elements.Alien;
-import com.mygdx.game.models.elements.Element;
-import com.mygdx.game.models.elements.Missile;
-import com.mygdx.game.models.elements.MoveableElement;
-import com.mygdx.game.models.elements.Spaceship;
+import com.mygdx.game.models.elements.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +81,10 @@ public class World {
 
     public void addMissile() {
         this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH ));
+    }
 
+    public void addMissileAlien(){
+        this.elements.add(new MissileAlien(this, new Vector2(alien.getPosition().x+1,alien.getPosition().y ), MoveableElement.Direction.SOUTH ));
     }
 
     public List<Element> getElements() {
