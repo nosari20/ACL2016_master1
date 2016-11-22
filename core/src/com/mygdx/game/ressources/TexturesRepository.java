@@ -21,7 +21,21 @@ public class TexturesRepository {
     private TextureRegion spaceship = new TextureRegion(new Texture("images/SpaceShip.png"));
     private TextureRegion alien = new TextureRegion(new Texture("images/alien.png"));
     private TextureRegion missile = new TextureRegion(new Texture("images/missile.png"));
+    private TextureRegion missileAlien = new TextureRegion(new Texture("images/missile_alien.png"));
+
     private static final float EXPLOSION_FRAME_DURATION = 0.06f;
+
+    public TexturesRepository() {
+        TextureRegion[] explosion = new TextureRegion[32];
+        for(int i=0;i<32;i++) {
+            explosion[i] = new TextureRegion(new Texture("images/explosion_1-" + i + "-00.png"));
+        }
+        explosionAnimation = new Animation(EXPLOSION_FRAME_DURATION,explosion);
+        explosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
+    }
+
+    public TextureRegion getMissileAlien(){return missileAlien;}
+
     public TextureRegion getMissile() {
         return missile;
     }
@@ -34,16 +48,10 @@ public class TexturesRepository {
         return alien;
     }
 
-    public TexturesRepository() {
-        TextureRegion[] explosion = new TextureRegion[32];
-        for(int i=0;i<32;i++) {
-            explosion[i] = new TextureRegion(new Texture("images/explosion_1-" + i + "-00.png"));
-        }
-        explosionAnimation = new Animation(EXPLOSION_FRAME_DURATION,explosion);
-        explosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
-    }
-
     public Animation getExplodeAnimation(){
         return explosionAnimation;
     }
 }
+
+
+

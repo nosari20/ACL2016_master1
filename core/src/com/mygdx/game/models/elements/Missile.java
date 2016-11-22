@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class Missile extends MoveableElement {
 
-    private static final int speed = 5;
     private float explode = 0;
     private float stateTime = 0;
+    private static final int speed = 10;
 
-    public Missile(Vector2 position, Direction direction) {
-        super(position, new Vector2(0.8f,0.8f), speed, direction);
+    public Missile(World w, Vector2 position, Direction direction) {
+        super(w,position, new Vector2(0.8f,0.8f), speed, direction);
         this.move();
     }
 

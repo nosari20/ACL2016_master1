@@ -1,11 +1,11 @@
 package com.mygdx.game.models.elements;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector;
+
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.TimeUtils;
+import com.mygdx.game.models.world.World;
+
 
 /**
  * Created by ACH02 on 08/11/2016.
@@ -22,16 +22,24 @@ public abstract class Element{
      */
     private Vector2 size;
 
+    /**
+     * World's instance
+     */
+    protected World world;
+
+
+
 
     protected com.badlogic.gdx.math.Rectangle bbox;
     /**
      * Default constructor
      * @param position
      */
-    public Element(Vector2 position) {
+    public Element(World w,Vector2 position) {
         this.position = new Vector2(position);
         this.size = new Vector2(5,5);
         bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,(float)1,(float)1);
+        this.world = w;
     }
 
 
@@ -39,10 +47,11 @@ public abstract class Element{
      * Constructor with size
      * @param position
      */
-    public Element(Vector2 position, Vector2 size) {
+    public Element(World w,Vector2 position, Vector2 size) {
         this.position = new Vector2(position);
         this.size = size;
         bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,(float)1,(float)1);
+        this.world = w;
     }
 
 
@@ -95,6 +104,14 @@ public abstract class Element{
             return bbox.overlaps(e.getBbox());
         return false;
     }
+    /**
+     * Detect if the element is out of the world
+     * @return
+     */
+    public boolean isOutWorld(){
+        return (this.getPosition().x + this.getSize().x < 0 || this.getPosition().x + this.getSize().x > this.world.getSize().x || this.getPosition().y < 0 || this.getPosition().y > this.world.getSize().y);
+    }
+
 
     public Rectangle getBbox() {
         return bbox;

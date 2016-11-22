@@ -1,6 +1,7 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.models.world.World;
 
 import java.util.Arrays;
 import java.util.List;
@@ -62,8 +63,8 @@ public abstract class MoveableElement extends Element{
      * Default constructor
      * @param position
      */
-    public MoveableElement(Vector2 position) {
-        super(position);
+    public MoveableElement(World w, Vector2 position) {
+        super(w,position);
         this.speed = MoveableElement.DEFAULT_SPEED;
         this.direction = MoveableElement.DEFAULT_INITIAL_DIRECTION;
         this.allowedDirection = MoveableElement.DEFAULT_ALLOWED_DIRECTIONS;
@@ -74,8 +75,8 @@ public abstract class MoveableElement extends Element{
      * Constructor with speeed
      * @param position
      */
-    public MoveableElement(Vector2 position, int speed) {
-        super(position);
+    public MoveableElement(World w, Vector2 position, int speed) {
+        super(w,position);
         this.speed = speed;
         this.direction = MoveableElement.DEFAULT_INITIAL_DIRECTION;
         this.allowedDirection = MoveableElement.DEFAULT_ALLOWED_DIRECTIONS;
@@ -86,8 +87,8 @@ public abstract class MoveableElement extends Element{
      * Constructor with all attribute
      * @param position
      */
-    public MoveableElement(Vector2 position, Vector2 size, int speed, Direction direction, List<Direction> allowedDirections) {
-        super(position, size);
+    public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction, List<Direction> allowedDirections) {
+        super(w,position, size);
         this.speed = speed;
         this.direction = direction;
         this.allowedDirection = allowedDirections;
@@ -97,8 +98,8 @@ public abstract class MoveableElement extends Element{
      * Constructor with all attribute
      * @param position
      */
-    public MoveableElement(Vector2 position, Vector2 size, int speed, Direction direction) {
-        super(position, size);
+    public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) {
+        super(w,position, size);
         this.speed = speed;
         this.direction = direction;
         this.isMoving = false;
@@ -117,19 +118,29 @@ public abstract class MoveableElement extends Element{
     public void update(float delta){
         if(isMoving) {
             double distance = this.speed * (delta);
+            Vector2 oldPos = this.getPosition();
+            Vector2 newPos = this.getPosition();
             switch (this.direction) {
                 case SOUTH:
-                    this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y - (float) distance));
+                    //this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y - (float) distance));
+                    newPos.set(newPos.x,newPos.y - (float) distance);
                     break;
                 case NORTH:
-                    this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y + (float) distance));
+                    //this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y + (float) distance));
+                    newPos.set(newPos.x,newPos.y + (float) distance);
                     break;
                 case EST:
-                    this.setPosition(this.getPosition().set(this.getPosition().x + (float) distance, this.getPosition().y));
+                    //this.setPosition(this.getPosition().set(this.getPosition().x + (float) distance, this.getPosition().y));
+                    newPos.set(newPos.x  + (float) distance ,newPos.y);
                     break;
                 case WEST:
-                    this.setPosition(this.getPosition().set(this.getPosition().x - (float) distance, this.getPosition().y));
+                    //this.setPosition(this.getPosition().set(this.getPosition().x - (float) distance, this.getPosition().y));
+                    newPos.set(newPos.x  - (float) distance ,newPos.y);
                     break;
+            }
+            this.setPosition(newPos);
+            if(this.isOutWorld()){
+               this.setPosition(oldPos);
             }
         }
     }
@@ -186,5 +197,7 @@ public abstract class MoveableElement extends Element{
     public Direction getDirection(){
         return this.direction;
     }
+
+
 
 }
