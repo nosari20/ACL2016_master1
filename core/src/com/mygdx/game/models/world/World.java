@@ -63,7 +63,7 @@ public class World {
      */
     public void update(){
         spaceship.update(Gdx.graphics.getDeltaTime());
-        ArrayList copyElement = new ArrayList(elements);
+        ArrayList destroyElement = new ArrayList();
         if(alien != null)
             alien.update(Gdx.graphics.getDeltaTime());
         for(Element e: elements){
@@ -78,11 +78,11 @@ public class World {
                         destroyAlien();
                     }
                 }
-                if ((((Missile) e).getExplode() > 1f))
-                    copyElement.remove(e);
+                    if ((((Missile) e).getExplode() > 1f))
+                        destroyElement.add(e);
             }
         }
-        elements = copyElement;
+        elements.removeAll(destroyElement);
     }
 
     /**

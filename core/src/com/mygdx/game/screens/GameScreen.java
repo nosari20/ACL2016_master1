@@ -11,6 +11,7 @@ import com.mygdx.game.GameMain;
 import com.mygdx.game.controller.SpaceshipController;
 import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Element;
+import com.mygdx.game.models.elements.MissileAlien;
 import com.mygdx.game.models.elements.Spaceship;
 import com.mygdx.game.models.world.World;
 
@@ -39,7 +40,6 @@ public class GameScreen implements Screen,ScreenGameConfig{
         viewport = new FitViewport(this.world.getSize().x*ppux,this.world.getSize().y*ppuy, camera);
         camera.position.set(((this.world.getSize().x * ppux) / 2f), (this.world.getSize().y * ppuy) / 2f, 0);
         camera.update();
-
         this.spaceShip = world.getSpaceShip();
         this.alien = world.getAlien();
         this.spaceshipController = new SpaceshipController(this.world);
@@ -62,9 +62,10 @@ public class GameScreen implements Screen,ScreenGameConfig{
         batch.begin();
         batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x+(spaceShip.getSize().x/2))*ppux,(spaceShip.getPosition().y-(spaceShip.getSize().y/2))*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
         batch.draw(alien.getTexture(), (alien.getPosition().x + (alien.getSize().x / 2)) * ppux, (alien.getPosition().y - (alien.getSize().y / 2)) * ppuy, alien.getSize().x * ppux, alien.getSize().y * ppuy);
-        for(Element e : elements)
+        for(Element e : elements) {
             batch.draw(e.getTexture(), (e.getPosition().x + (e.getSize().x / 2)) * ppux, (e.getPosition().y - (e.getSize().y / 2)) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
-        batch.end();
+        }
+            batch.end();
         world.update();
 
     }
