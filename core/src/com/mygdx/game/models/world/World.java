@@ -67,11 +67,26 @@ public class World {
      */
     public void update(){
         spaceship.update(Gdx.graphics.getDeltaTime());
-        alien.update(Gdx.graphics.getDeltaTime());
+        ArrayList copyElement = new ArrayList(elements);
+        if(alien != null)
+            alien.update(Gdx.graphics.getDeltaTime());
         for(Element e: elements){
             if(e instanceof MoveableElement)
                 ((MoveableElement)e).update(Gdx.graphics.getDeltaTime());
+            if(e instanceof Missile) {
+                if (((Missile) e).getExplode() == 0 && alien != null) {
+                    if (e.hasCollision(alien)) {
+                        ((Missile) e).collision();
+                        e.setPosition(alien.getPosition());
+                        e.setSize(alien.getSize());
+                        destroyAlien();
+                    }
+                }
+                if ((((Missile) e).getExplode() > 1f))
+                    copyElement.remove(e);
+            }
         }
+        elements = copyElement;
     }
 
     /**
@@ -84,12 +99,19 @@ public class World {
 
 
     public void addMissile() {
-        this.elements.add(new Missile(new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH ));
+        this.elements.add(new Missile(new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH));
 
     }
 
     public List<Element> getElements() {
         return elements;
     }
+
+    public void destroyAlien(){
+        elements.remove(alien);
+        alien = null;
+    }
+
+
 }
 

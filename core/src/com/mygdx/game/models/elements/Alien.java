@@ -1,6 +1,7 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.ressources.TexturesRepository;
@@ -39,7 +40,7 @@ public class Alien  extends MoveableElement {
      * Getter for texture
      * @return
      */
-    public Texture getTexture(){
+    public TextureRegion getTexture(){
         return TexturesRepository.getInstance().getAlien();
     }
 
