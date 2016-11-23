@@ -139,9 +139,9 @@ public abstract class MoveableElement extends Element{
                     break;
             }
             this.setPosition(newPos);
-            if(this.isOutWorld()){
+            /*if(this.isOutWorld()){
                this.setPosition(oldPos);
-            }
+            }*/
         }
     }
 

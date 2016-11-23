@@ -181,7 +181,7 @@ public class Alien  extends MoveableElement {
         }
 
         nb_frame++;
-        if((nb_frame%120 ==0)){
+        if((nb_frame%120 ==0 && isMoving)){
             this.world.addMissileAlien();
         }
     }
