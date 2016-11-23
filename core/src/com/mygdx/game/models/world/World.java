@@ -87,6 +87,7 @@ public class World implements ScreenGameConfig{
                         destroyElement.add(e);
             }
             Vector2 v = e.getSize();
+            //Verifie si l'objet sort du monde
             if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
                 Gdx.app.log("Left the world", "for always");
                 if(!destroyElement.contains(e))
