@@ -186,6 +186,13 @@ public class Alien  extends MoveableElement {
         }
     }
 
+    public boolean isChangeDirection() {
+        return changeDirection;
+    }
+
+    public int getNb_pattern() {
+        return nb_pattern;
+    }
 }
 
 

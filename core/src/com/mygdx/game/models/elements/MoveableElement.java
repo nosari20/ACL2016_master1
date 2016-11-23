@@ -198,6 +198,9 @@ public abstract class MoveableElement extends Element{
         return this.direction;
     }
 
+    public List<Direction> getAllowedDirection() {
+        return allowedDirection;
+    }
 
 
 }
