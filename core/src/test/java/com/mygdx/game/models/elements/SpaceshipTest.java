@@ -6,6 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.Arrays;
+
 import static com.mygdx.game.models.elements.MoveableElement.Direction.*;
 import static org.junit.Assert.*;
 
@@ -30,7 +32,8 @@ public class SpaceshipTest {
         assertEquals(ship.getSpeed(), 12f, 0.001);
         assertEquals(ship.isMoving(), false);
         assertEquals(ship.getDirection(), MoveableElement.Direction.NORTH);
-
+        assertEquals(ship.world, this.world);
+        assertEquals(ship.getAllowedDirection(), Arrays.asList(MoveableElement.Direction.NORTH, MoveableElement.Direction.SOUTH, MoveableElement.Direction.EST, MoveableElement.Direction.WEST));
     }
 
     @Test
