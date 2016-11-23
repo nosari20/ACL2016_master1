@@ -1,21 +1,24 @@
 package com.mygdx.game.models.world;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.models.elements.*;
+import com.mygdx.game.screens.ScreenGameConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by Acherus on 09/11/2016.
  */
-public class World {
+public class World implements ScreenGameConfig{
 
     private final static int WORLD_WIDTH = 30;
     private final static int WORLD_HEIGHT = 35;
     private List<Element> elements;
-
+    private Rectangle worldSurface;
     /**
      * The spaceship
      */
@@ -40,6 +43,7 @@ public class World {
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
         this.alien = new Alien(this,new Vector2((this.size.x/2),this.size.y));
         this.elements = new ArrayList<Element>();
+        worldSurface = new Rectangle(0,0,this.WORLD_WIDTH,this.WORLD_HEIGHT);
     }
 
     /**
@@ -66,6 +70,7 @@ public class World {
         ArrayList destroyElement = new ArrayList();
         if(alien != null)
             alien.update(Gdx.graphics.getDeltaTime());
+
         for(Element e: elements){
             if(e instanceof MoveableElement)
                 ((MoveableElement)e).update(Gdx.graphics.getDeltaTime());
@@ -80,6 +85,12 @@ public class World {
                 }
                     if ((((Missile) e).getExplode() > 1f))
                         destroyElement.add(e);
+            }
+            Vector2 v = e.getSize();
+            if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
+                Gdx.app.log("Left the world", "for always");
+                if(!destroyElement.contains(e))
+                    destroyElement.add(e);
             }
         }
         elements.removeAll(destroyElement);
