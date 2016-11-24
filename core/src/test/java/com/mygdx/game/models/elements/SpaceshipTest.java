@@ -80,7 +80,7 @@ public class SpaceshipTest {
         float new_x = ship.getPosition().x;
         float new_y = ship.getPosition().y;
         float speed = ship.getSpeed();
-        assertTrue("NEW_Y = Y - SPEED",new_y==y - speed*10);
+        assertTrue("NEW_Y = Y + SPEED",new_y==y + speed*10);
         assertTrue("NEW_X = X ",new_x==x);
     }
 
@@ -94,7 +94,7 @@ public class SpaceshipTest {
         float new_x = ship.getPosition().x;
         float new_y = ship.getPosition().y;
         float speed = ship.getSpeed();
-        assertTrue("NEW_Y = Y + SPEED",new_y==y+speed*10);
+        assertTrue("NEW_Y = Y - SPEED",new_y==y-speed*10);
         assertTrue("NEW_X = X",new_x==x);
     }
 
