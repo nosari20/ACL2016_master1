@@ -19,7 +19,6 @@ public class World implements ScreenGameConfig{
     private final static int WORLD_HEIGHT = 35;
     private List<Element> elements;
     private Rectangle worldSurface;
-    private ElementsManager em;
     /**
      * The spaceship
      */
@@ -45,7 +44,6 @@ public class World implements ScreenGameConfig{
         this.alien = new Alien(this,new Vector2((this.size.x/2),this.size.y));
         this.elements = new ArrayList<Element>();
         worldSurface = new Rectangle(0,0,this.WORLD_WIDTH,this.WORLD_HEIGHT);
-        this.em = new ElementsManager();
     }
 
     /**
@@ -71,9 +69,47 @@ public class World implements ScreenGameConfig{
         spaceship.update(Gdx.graphics.getDeltaTime());
         if(alien != null)
             alien.update(Gdx.graphics.getDeltaTime());
-        ArrayList destroyElement = em.manage(elements, spaceship, alien, worldSurface);
+        ArrayList destroyElement = manage();
 
         elements.removeAll(destroyElement);
+    }
+
+    private ArrayList manage() {
+        ArrayList destroyElement = new ArrayList();
+        for(Element e: elements){
+            if(e instanceof MoveableElement)
+                ((MoveableElement)e).update(Gdx.graphics.getDeltaTime());
+            manageCollision(destroyElement, e);
+            manageOuts(destroyElement, e);
+        }
+
+        return destroyElement;
+    }
+
+    private void manageOuts(ArrayList destroyElement, Element e) {
+        Vector2 v = e.getSize();
+        //Verifie si l'objet sort du monde
+        if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
+            Gdx.app.log("Left the world", "for always");
+            if(!destroyElement.contains(e))
+                destroyElement.add(e);
+        }
+    }
+
+    private void manageCollision(ArrayList destroyElement, Element e) {
+        if(e instanceof Missile) {
+            if (((Missile) e).getExplode() == 0 && alien != null) {
+                if (e.hasCollision(alien)) {
+                    ((Missile) e).collision();
+                    e.setPosition(alien.getPosition());
+                    e.setSize(alien.getSize());
+                    alien.stop();
+                    destroyAlien(elements, alien);
+                }
+            }
+            if ((((Missile) e).getExplode() > 1f))
+                destroyElement.add(e);
+        }
     }
 
     /**
@@ -97,10 +133,11 @@ public class World implements ScreenGameConfig{
         return elements;
     }
 
-    public void destroyAlien(){
+    public void destroyAlien(List<Element> elements, Alien alien){
         elements.remove(alien);
         alien = null;
     }
+
 
 
 

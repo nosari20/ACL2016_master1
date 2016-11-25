@@ -99,18 +99,6 @@ public abstract class Element{
      */
     public abstract TextureRegion getTexture();
 
-    public boolean hasCollision(Element e){
-        if(e != null)
-            return bbox.overlaps(e.getBbox());
-        return false;
-    }
-    /**
-     * Detect if the element is out of the world
-     * @return
-     */
-    public boolean isOutWorld(){
-        return (this.getPosition().x + this.getSize().x < 0 || this.getPosition().x + this.getSize().x > this.world.getSize().x || this.getPosition().y < 0 || this.getPosition().y > this.world.getSize().y);
-    }
 
 
     public Rectangle getBbox() {
