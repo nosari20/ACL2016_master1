@@ -99,7 +99,11 @@ public abstract class Element{
      */
     public abstract TextureRegion getTexture();
 
-
+    public boolean hasCollision(Element e){
+             if(e != null)
+                 return bbox.overlaps(e.getBbox());
+             return false;
+     }
 
     public Rectangle getBbox() {
         return bbox;
