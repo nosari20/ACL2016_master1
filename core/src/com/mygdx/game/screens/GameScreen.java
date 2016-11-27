@@ -62,11 +62,11 @@ public class GameScreen implements Screen,ScreenGameConfig{
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x+(spaceShip.getSize().x/2))*ppux,(spaceShip.getPosition().y-(spaceShip.getSize().y/2))*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
+        batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x)*ppux,(spaceShip.getPosition().y)*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
         if(alien != null)
-            batch.draw(alien.getTexture(), (alien.getPosition().x + (alien.getSize().x / 2)) * ppux, (alien.getPosition().y - (alien.getSize().y / 2)) * ppuy, alien.getSize().x * ppux, alien.getSize().y * ppuy);
+            batch.draw(alien.getTexture(), (alien.getPosition().x ) * ppux, (alien.getPosition().y ) * ppuy, alien.getSize().x * ppux, alien.getSize().y * ppuy);
         for(Element e : elements) {
-            batch.draw(e.getTexture(), (e.getPosition().x + (e.getSize().x / 2)) * ppux, (e.getPosition().y - (e.getSize().y / 2)) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
+            batch.draw(e.getTexture(), (e.getPosition().x ) * ppux, (e.getPosition().y ) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
         }
 
             batch.end();

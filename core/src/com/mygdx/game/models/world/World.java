@@ -132,7 +132,7 @@ public class World implements ScreenGameConfig{
 
 
     public void addMissile() {
-        this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+4.2f,spaceship.getPosition().y+1.5f ), MoveableElement.Direction.NORTH ));
+        this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+((spaceship.getSize().x/2f)-1f),spaceship.getPosition().y+(spaceship.getSize().y/2f)), MoveableElement.Direction.NORTH ));
     }
 
     public void addMissileAlien(){

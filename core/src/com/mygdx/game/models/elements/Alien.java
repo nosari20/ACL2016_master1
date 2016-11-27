@@ -30,10 +30,8 @@ public class Alien  extends MortalElement {
     public Alien(World w, Vector2 position) {
         super(w, position, new Vector2(2,3), ALIEN_SPEED, Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
         this.move();
-
         Random rand = new Random();
         this.nb_pattern = rand.nextInt(NB_DEPLACEMENT_PATTERN) + 1;
-
         this.changeDirection = true;
         this.vie = 5;
     }

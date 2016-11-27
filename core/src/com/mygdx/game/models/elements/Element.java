@@ -27,9 +27,6 @@ public abstract class Element{
      */
     protected World world;
 
-
-
-
     protected com.badlogic.gdx.math.Rectangle bbox;
     /**
      * Default constructor
@@ -37,8 +34,8 @@ public abstract class Element{
      */
     public Element(World w,Vector2 position) {
         this.position = new Vector2(position);
-        this.size = new Vector2(5,5);
-        bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,(float)1,(float)1);
+        this.size = new Vector2(5f,5f);
+        bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,5f,4f);
         this.world = w;
     }
 
@@ -50,7 +47,7 @@ public abstract class Element{
     public Element(World w,Vector2 position, Vector2 size) {
         this.position = new Vector2(position);
         this.size = size;
-        bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,(float)1,(float)1);
+        bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,size.x,size.y-0.5f);
         this.world = w;
     }
 
@@ -76,13 +73,14 @@ public abstract class Element{
      * @param position
      */
     public void setPosition(Vector2 position) {
+        this.bbox.setX(position.x);
+        this.bbox.setY(position.y);
         this.position = new Vector2(position);
-        this.bbox.setPosition(position);
     }
 
     public void setSize(Vector2 size){
         this.size = new Vector2(size);
-        this.bbox = this.bbox.setSize(4,5);
+        this.bbox = this.bbox.setSize(size.x,size.y);
     }
 
     /**

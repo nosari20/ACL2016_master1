@@ -22,7 +22,6 @@ public class Spaceship extends MortalElement {
     public Spaceship(World w, Vector2 position) {
         super(w, position);
         this.setSpeed(SPACESHIP_SPEED);
-        this.setSize(new Vector2(5f,5f));
         this.vie = 100;
     }
 
