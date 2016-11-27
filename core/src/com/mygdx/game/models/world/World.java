@@ -68,7 +68,7 @@ public class World implements ScreenGameConfig{
     public void update(){
         spaceship.update(Gdx.graphics.getDeltaTime());
         if(alien != null)
-            alien.update(Gdx.graphics.getDeltaTime());
+            alien.update(Gdx.graphics.getDeltaTime()*2);
         ArrayList destroyElement = manage();
 
         elements.removeAll(destroyElement);
@@ -109,6 +109,13 @@ public class World implements ScreenGameConfig{
             }
             if ((((Missile) e).getExplode() > 1f))
                 destroyElement.add(e);
+        }else if(e instanceof MissileAlien){
+            if(spaceship.hasCollision(e)){
+               
+            }
+        }
+        if(alien.hasCollision(spaceship)){
+
         }
     }
 

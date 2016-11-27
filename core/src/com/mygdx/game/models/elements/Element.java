@@ -55,7 +55,6 @@ public abstract class Element{
     }
 
 
-
     /**
      * Return the position of the element (immutable)
      * @return position
@@ -83,6 +82,7 @@ public abstract class Element{
 
     public void setSize(Vector2 size){
         this.size = new Vector2(size);
+        this.bbox = this.bbox.setSize(4,5);
     }
 
     /**
