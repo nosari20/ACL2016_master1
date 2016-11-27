@@ -30,23 +30,24 @@ public class SpaceshipController implements InputProcessor{
 
     @Override
     public boolean keyDown(int keycode) {
-        switch (keycode){
-            case Input.Keys.LEFT:
-            case Input.Keys.Q:
-                this.spaceShip.setDirection(MoveableElement.Direction.WEST);
-                this.spaceShip.move();
-                break;
-            case Input.Keys.RIGHT:
-            case Input.Keys.D:
-                this.spaceShip.setDirection(MoveableElement.Direction.EST);
-                this.spaceShip.move();
-                break;
-            case Input.Keys.SPACE:
-                Gdx.app.log("Test", "Launched missile !");
-                this.world.addMissile();
-                break;
+        if(!this.spaceShip.isDie()) {
+            switch (keycode) {
+                case Input.Keys.LEFT:
+                case Input.Keys.Q:
+                    this.spaceShip.setDirection(MoveableElement.Direction.WEST);
+                    this.spaceShip.move();
+                    break;
+                case Input.Keys.RIGHT:
+                case Input.Keys.D:
+                    this.spaceShip.setDirection(MoveableElement.Direction.EST);
+                    this.spaceShip.move();
+                    break;
+                case Input.Keys.SPACE:
+                    Gdx.app.log("Test", "Launched missile !");
+                    this.world.addMissile();
+                    break;
+            }
         }
-
         return false;
     }
 

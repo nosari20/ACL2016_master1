@@ -111,11 +111,12 @@ public class World implements ScreenGameConfig{
                 destroyElement.add(e);
         }else if(e instanceof MissileAlien){
             if(spaceship.hasCollision(e)){
-               
+         
             }
         }
         if(alien.hasCollision(spaceship)){
-
+            this.spaceship.spaceshipDie();
+            alien.stop();
         }
     }
 

@@ -13,6 +13,8 @@ public class Spaceship extends MoveableElement {
 
     private final int SPACESHIP_SPEED = 12;
 
+    private boolean isDie;
+
     /**
      * Default constructor
      *
@@ -22,6 +24,7 @@ public class Spaceship extends MoveableElement {
         super(w, position);
         this.setSpeed(SPACESHIP_SPEED);
         this.setSize(new Vector2(5f,5f));
+        this.isDie = false;
     }
 
     /**
@@ -39,6 +42,15 @@ public class Spaceship extends MoveableElement {
      */
     public TextureRegion getTexture(){
         return TexturesRepository.getInstance().getSpaceship();
+    }
+
+    public void spaceshipDie(){
+        this.stop();
+        this.isDie = true;
+    }
+
+    public boolean isDie(){
+        return this.isDie;
     }
 
 }
