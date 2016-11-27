@@ -30,7 +30,7 @@ public class SpaceshipController implements InputProcessor{
 
     @Override
     public boolean keyDown(int keycode) {
-        if(!this.spaceShip.isDie()) {
+        if(!this.spaceShip.isDead()) {
             switch (keycode) {
                 case Input.Keys.LEFT:
                 case Input.Keys.Q:

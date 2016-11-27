@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Created by ACH02 on 10/11/2016.
  */
-public class Alien  extends MoveableElement {
+public class Alien  extends MortalElement {
 
     private final static int ALIEN_SPEED = 3;
     private final static int NB_DEPLACEMENT_PATTERN = 5;
@@ -35,7 +35,19 @@ public class Alien  extends MoveableElement {
         this.nb_pattern = rand.nextInt(NB_DEPLACEMENT_PATTERN) + 1;
 
         this.changeDirection = true;
+        this.vie = 5;
     }
+
+    /**
+     * Ne fait pour l'instant
+     * @param missileWeight
+     */
+    @Override
+    public void destroy(int missileWeight) {
+
+    }
+
+
 
 
     /**
