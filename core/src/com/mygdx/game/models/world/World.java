@@ -3,12 +3,13 @@ package com.mygdx.game.models.world;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.exceptions.GameException;
+import com.mygdx.game.exceptions.SpaceshipDieException;
 import com.mygdx.game.models.elements.*;
 import com.mygdx.game.screens.ScreenGameConfig;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * Created by Acherus on 09/11/2016.
@@ -65,7 +66,7 @@ public class World implements ScreenGameConfig{
     /**
      * Update the world
      */
-    public void update(){
+    public void update() throws GameException{
         spaceship.update(Gdx.graphics.getDeltaTime());
         if(alien != null)
             alien.update(Gdx.graphics.getDeltaTime()*2);
@@ -74,7 +75,7 @@ public class World implements ScreenGameConfig{
         elements.removeAll(destroyElement);
     }
 
-    private ArrayList manage() {
+    private ArrayList manage() throws GameException {
         ArrayList destroyElement = new ArrayList();
         for(Element e: elements){
             if(e instanceof MoveableElement)
@@ -96,7 +97,7 @@ public class World implements ScreenGameConfig{
         }
     }
 
-    private void manageCollision(ArrayList destroyElement, Element e) {
+    private void manageCollision(ArrayList destroyElement, Element e) throws SpaceshipDieException {
         if(e instanceof Missile) {
             if (((Missile) e).getExplode() == 0 && alien != null) {
                 if (e.hasCollision(alien)) {
@@ -111,12 +112,13 @@ public class World implements ScreenGameConfig{
                 destroyElement.add(e);
         }else if(e instanceof MissileAlien){
             if(spaceship.hasCollision(e)){
-         
+                throw new SpaceshipDieException();
             }
         }
         if(alien.hasCollision(spaceship)){
             this.spaceship.spaceshipDie();
             alien.stop();
+            throw new SpaceshipDieException();
         }
     }
 

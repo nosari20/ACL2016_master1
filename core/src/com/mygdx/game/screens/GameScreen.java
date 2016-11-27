@@ -9,6 +9,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.GameMain;
 import com.mygdx.game.controller.SpaceshipController;
+import com.mygdx.game.exceptions.GameException;
+import com.mygdx.game.exceptions.SpaceshipDieException;
 import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Element;
 import com.mygdx.game.models.elements.MissileAlien;
@@ -68,7 +70,13 @@ public class GameScreen implements Screen,ScreenGameConfig{
         }
 
             batch.end();
-        world.update();
+
+        try {
+            world.update();
+        } catch (GameException e) {
+            if(e instanceof SpaceshipDieException)
+                this.restart();
+        }
 
     }
 
@@ -95,5 +103,14 @@ public class GameScreen implements Screen,ScreenGameConfig{
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+
+    public void restart(){
+        this.world = new World();
+        this.spaceShip = world.getSpaceShip();
+        this.alien = world.getAlien();
+        this.spaceshipController = new SpaceshipController(this.world);
+        Gdx.input.setInputProcessor(this.spaceshipController);
     }
 }
