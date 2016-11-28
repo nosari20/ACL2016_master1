@@ -109,7 +109,7 @@ public class World implements ScreenGameConfig{
                     alien.touched(((Missile) e).getPuissance());
                     if(alien.isDead() == true){
                         alien.stop();
-                        destroyAlien(elements, alien);
+                        destroyAlien(elements, alien,((Missile) e).getPoid());
                     }
 
                 }
@@ -154,10 +154,10 @@ public class World implements ScreenGameConfig{
         return elements;
     }
 
-    public void destroyAlien(List<Element> elements, Alien alien){
+    public void destroyAlien(List<Element> elements, Alien alien,float poid){
         elements.remove(alien);
         alien = null;
-        getSpaceShip().addVie(1);
+        getSpaceShip().addVie(poid * 0.1f);
     }
 
 

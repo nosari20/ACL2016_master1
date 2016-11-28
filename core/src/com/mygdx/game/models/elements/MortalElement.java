@@ -9,7 +9,7 @@ import java.util.List;
  * Created by aschmat on 27/11/2016.
  */
 public abstract class MortalElement extends MoveableElement {
-    protected int vie;
+    protected float vie;
     protected boolean isDead;
 
     public MortalElement(World w, Vector2 position) {
@@ -28,11 +28,11 @@ public abstract class MortalElement extends MoveableElement {
     public MortalElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) {
         super(w, position, size, speed, direction);
     }
-    public int getVie(){
+    public float getVie(){
         return this.vie;
     }
 
-    public void setVie(int newVie){
+    public void setVie(float newVie){
         this.vie = newVie;
     }
 

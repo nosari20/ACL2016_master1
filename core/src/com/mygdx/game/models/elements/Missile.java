@@ -15,6 +15,7 @@ public class Missile extends MoveableElement {
     private static final int speed = 10;
     private MissileSource source = MissileSource.SPACESHIP;
     private int puissance = 5;
+    private float poid = 1f;
 
     public Missile(World w, Vector2 position, Direction direction) {
         super(w,position, new Vector2(0.8f,0.8f), speed, direction);
@@ -51,5 +52,13 @@ public class Missile extends MoveableElement {
 
     public int getPuissance() {
         return puissance;
+    }
+
+    public float getPoid() {
+        return poid;
+    }
+
+    public void setPoid(float poid) {
+        this.poid = poid;
     }
 }
