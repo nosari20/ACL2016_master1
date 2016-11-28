@@ -12,7 +12,7 @@ import com.mygdx.game.ressources.TexturesRepository;
 public class Spaceship extends MortalElement {
 
     private final int SPACESHIP_SPEED = 12;
-
+    private int nbAlienDetruit;
 
 
     /**
@@ -24,6 +24,7 @@ public class Spaceship extends MortalElement {
         super(w, position);
         this.setSpeed(SPACESHIP_SPEED);
         this.vie = 100;
+        this.nbAlienDetruit = 0;
     }
 
     /**
@@ -33,6 +34,7 @@ public class Spaceship extends MortalElement {
     @Override
     public void destroy(float missileWeight) {
         this.addVie(missileWeight * 0.1f);
+        this.nbAlienDetruit++;
         Gdx.app.log("Le pv monte de "+(missileWeight * 0.1f), "vie actuel" +this.vie);
     }
 
