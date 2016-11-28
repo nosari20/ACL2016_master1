@@ -12,9 +12,12 @@ import com.mygdx.game.ressources.TexturesRepository;
 public class Spaceship extends MortalElement {
 
     private final int SPACESHIP_SPEED = 12;
+    // Attribut qui compte le nombre d'alien detruit peut etre reutilisé pour le score
     private int nbAlienDetruit;
-
-
+    //Attribut qui permet d'activer ou non le mode powerUp
+    private boolean powerUp;
+    //Attribut qui permet de mettre fin au powerup
+    private int counter;
     /**
      * Default constructor
      *
@@ -25,6 +28,8 @@ public class Spaceship extends MortalElement {
         this.setSpeed(SPACESHIP_SPEED);
         this.vie = 100;
         this.nbAlienDetruit = 0;
+        this.powerUp = false;
+        this.counter = 0;
     }
 
     /**
@@ -38,7 +43,22 @@ public class Spaceship extends MortalElement {
         Gdx.app.log("Le pv monte de "+(missileWeight * 0.1f), "vie actuel" +this.vie);
     }
 
-
+    /**
+     * surcharge de la fonction update qui permet de mettre fin au powerUp apres 2 seconde pour l'instant
+     * soit 60 fps
+     * soit 120 iteration de la fonction update pour atteindre 2 sec
+     * @param deltaTime
+     */
+    @Override
+    public void update(float deltaTime){
+        super.update(deltaTime);
+        if(powerUp && counter < 121)
+            counter++;
+        else {
+            stopPowerUp();
+            counter = 0;
+        }
+    }
     /**
      *
      * @return description of the element
@@ -67,5 +87,19 @@ public class Spaceship extends MortalElement {
         }else{
             this.setVie(vie+add);
         }
+    }
+
+    /**
+     * active le mode powerUp
+     */
+    public void activatePowerUp() {
+        this.powerUp = true;
+    }
+
+    /**
+     * Stoppe le mode powerUp
+     */
+    public void stopPowerUp(){
+        this.powerUp = false;
     }
 }

@@ -163,6 +163,13 @@ public class World implements ScreenGameConfig{
 
     }
 
+    /**
+     * Appelle powerUp() dans spaceship et met a jour un boolean
+     */
+    private void addPowerUp(){
+        this.spaceship.activatePowerUp();
+    }
+
 
 
 
