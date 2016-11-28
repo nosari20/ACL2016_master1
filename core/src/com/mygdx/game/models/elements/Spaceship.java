@@ -57,10 +57,6 @@ public class Spaceship extends MortalElement {
         this.isDead = true;
     }
 
-    public boolean isDead(){
-        return this.isDead;
-    }
-
     public void addVie(int add){
         if(vie+add > 100){
             this.setVie(100);

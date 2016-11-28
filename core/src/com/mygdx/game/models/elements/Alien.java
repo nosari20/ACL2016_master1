@@ -65,10 +65,6 @@ public class Alien  extends MortalElement {
         return TexturesRepository.getInstance().getAlien();
     }
 
-    public boolean isDead(){
-        return this.isDead;
-    }
-
     /**
      * Update the elements properties with the controler depending on the delta time
      */

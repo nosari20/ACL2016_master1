@@ -111,7 +111,7 @@ public class World implements ScreenGameConfig{
                         alien.stop();
                         destroyAlien(elements, alien);
                     }
-                    
+
                 }
             }
             if ((((Missile) e).getExplode() > 1f))

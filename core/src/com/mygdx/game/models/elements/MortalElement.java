@@ -36,6 +36,10 @@ public abstract class MortalElement extends MoveableElement {
         this.vie = newVie;
     }
 
+    public boolean isDead(){
+        return this.isDead;
+    }
+
     /**
      * Methode permettant de definir un comportement si l'objet est touché par un missile
      * @param missileWeight
