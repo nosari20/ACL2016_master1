@@ -41,7 +41,7 @@ public class Alien  extends MortalElement {
      * @param missileWeight
      */
     @Override
-    public void destroy(int missileWeight) {
+    public void destroy(float missileWeight) {
 
     }
 

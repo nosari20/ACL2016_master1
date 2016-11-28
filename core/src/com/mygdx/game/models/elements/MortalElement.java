@@ -58,7 +58,7 @@ public abstract class MortalElement extends MoveableElement {
      * Methode permettant de definir un comportement si l'objet actuel detruit un autre
      * @param missileWeight
      */
-    public abstract void destroy(int missileWeight);
+    public abstract void destroy(float missileWeight);
 
 
 }
