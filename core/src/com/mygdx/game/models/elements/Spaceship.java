@@ -1,5 +1,6 @@
 package com.mygdx.game.models.elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.models.world.World;
@@ -30,8 +31,9 @@ public class Spaceship extends MortalElement {
      * @param missileWeight
      */
     @Override
-    public void destroy(int missileWeight) {
-
+    public void destroy(float missileWeight) {
+        this.addVie(missileWeight * 0.1f);
+        Gdx.app.log("Le pv monte de "+(missileWeight * 0.1f), "vie actuel" +this.vie);
     }
 
 
