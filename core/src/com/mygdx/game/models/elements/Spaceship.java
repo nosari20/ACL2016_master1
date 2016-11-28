@@ -18,6 +18,7 @@ public class Spaceship extends MortalElement {
     private boolean powerUp;
     //Attribut qui permet de mettre fin au powerup
     private int counter;
+    private static final int nbSec = 10;
     /**
      * Default constructor
      *
@@ -52,7 +53,7 @@ public class Spaceship extends MortalElement {
     @Override
     public void update(float deltaTime){
         super.update(deltaTime);
-        if(powerUp && counter < 121)
+        if(powerUp && counter < (60 * nbSec))
             counter++;
         else {
             stopPowerUp();
