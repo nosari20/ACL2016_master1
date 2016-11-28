@@ -146,6 +146,7 @@ public class World implements ScreenGameConfig{
     public void destroyAlien(List<Element> elements, Alien alien){
         elements.remove(alien);
         alien = null;
+        getSpaceShip().addVie(1);
     }
 
 

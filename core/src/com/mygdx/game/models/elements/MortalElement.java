@@ -31,6 +31,11 @@ public abstract class MortalElement extends MoveableElement {
     public int getVie(){
         return this.vie;
     }
+
+    public void setVie(int newVie){
+        this.vie = newVie;
+    }
+
     /**
      * Methode permettant de definir un comportement si l'objet est touché par un missile
      * @param missileWeight
