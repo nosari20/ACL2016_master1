@@ -28,7 +28,7 @@ public class Spaceship extends MortalElement {
         this.setSpeed(SPACESHIP_SPEED);
         this.vie = 100;
         this.nbAlienDetruit = 0;
-        this.powerUp = false;
+        this.powerUp = true;
         this.counter = 0;
     }
 
@@ -101,5 +101,9 @@ public class Spaceship extends MortalElement {
      */
     public void stopPowerUp(){
         this.powerUp = false;
+    }
+
+    public boolean isPowerUp(){
+        return this.powerUp;
     }
 }
