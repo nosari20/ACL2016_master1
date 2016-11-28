@@ -19,6 +19,8 @@ public abstract class MoveableElement extends Element{
         NORTH,
         EST,
         WEST,
+        NORTHEAST,
+        NORTHWEST,
     }
 
     /**
@@ -144,6 +146,12 @@ public abstract class MoveableElement extends Element{
                 case WEST:
                     //this.setPosition(this.getPosition().set(this.getPosition().x - (float) distance, this.getPosition().y));
                     newPos.set(newPos.x  - (float) distance ,newPos.y);
+                    break;
+                case NORTHEAST:
+                    newPos.set(newPos.x + (float)(Math.cos(Math.PI/4)*distance),newPos.y + (float)(Math.sin(Math.PI/4)*distance));
+                    break;
+                case NORTHWEST:
+                    newPos.set(newPos.x + (float)(Math.cos(Math.PI*3/4)*distance),newPos.y + (float)(Math.sin(Math.PI*3/4)*distance));
                     break;
             }
             this.setPosition(newPos);

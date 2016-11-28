@@ -36,7 +36,20 @@ public class Missile extends MoveableElement {
     public void update(float delta){
         if(isMoving) {
             double distance = this.speed * (delta);
-            this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y + (float) distance));
+            Vector2 newPos = this.getPosition();
+            switch (this.getDirection()) {
+                case NORTH:
+                    //this.setPosition(this.getPosition().set(this.getPosition().x, this.getPosition().y + (float) distance));
+                    newPos.set(newPos.x, newPos.y + (float) distance);
+                    break;
+                case NORTHEAST:
+                    newPos.set(newPos.x + (float) (Math.cos(Math.PI / 4) * distance), newPos.y + (float) (Math.sin(Math.PI / 4) * distance));
+                    break;
+                case NORTHWEST:
+                    newPos.set(newPos.x + (float) (Math.cos(Math.PI * 3 / 4) * distance), newPos.y + (float) (Math.sin(Math.PI * 3 / 4) * distance));
+                    break;
+            }
+            this.setPosition(newPos);
         }
         if(explode > 0)
             explode += delta;
