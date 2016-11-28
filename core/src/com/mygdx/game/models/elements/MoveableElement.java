@@ -22,6 +22,14 @@ public abstract class MoveableElement extends Element{
     }
 
     /**
+     * MissileSource enum
+     */
+    public enum MissileSource {
+        ALIEN,
+        SPACESHIP,
+    }
+
+    /**
      * Default speed
      */
     protected final static int DEFAULT_SPEED = 10;

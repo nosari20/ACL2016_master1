@@ -104,15 +104,26 @@ public class World implements ScreenGameConfig{
                     ((Missile) e).collision();
                     e.setPosition(alien.getPosition());
                     e.setSize(alien.getSize());
-                    alien.stop();
-                    destroyAlien(elements, alien);
+
+                    //gestion collision Missile avec un Alien
+                    alien.touched(((Missile) e).getPuissance());
+                    if(alien.isDead() == true){
+                        alien.stop();
+                        destroyAlien(elements, alien);
+                    }
+                    
                 }
             }
             if ((((Missile) e).getExplode() > 1f))
                 destroyElement.add(e);
         }else if(e instanceof MissileAlien){
             if(spaceship.hasCollision(e)){
-                throw new SpaceshipDieException();
+
+                //gestion collision MissileAlien aves le SpaceShip
+                spaceship.touched(((MissileAlien) e).getPuissance());
+                if(spaceship.isDead() == true) {
+                    throw new SpaceshipDieException();
+                }
             }
         }
         if(alien.hasCollision(spaceship)){
