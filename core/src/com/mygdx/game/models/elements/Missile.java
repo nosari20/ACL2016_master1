@@ -74,4 +74,14 @@ public class Missile extends MoveableElement {
     public void setPoid(float poid) {
         this.poid = poid;
     }
+    public void inverseDirection(MoveableElement.Direction direction) {
+        switch (direction){
+            case WEST:
+                this.setDirection(Direction.NORTHEAST);
+                break;
+            case EST:
+                this.setDirection(Direction.NORTHWEST);
+                break;
+        }
+    }
 }

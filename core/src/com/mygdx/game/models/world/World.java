@@ -97,15 +97,20 @@ public class World implements ScreenGameConfig{
 
         if( e instanceof  Missile){
             if(e.getPosition().x <= 0 || e.getPosition().x + e.getSize().x >= this.getSize().x){
-                //(Missile)e.inverseDirection();
+
             }
+            //
         }
 
 
 
         if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
             Gdx.app.log("Left the world", "for always");
-            if(!destroyElement.contains(e))
+            if(e.getPosition().x <= 0)
+                ((Missile)e).inverseDirection(MoveableElement.Direction.WEST);
+            else if(e.getPosition().x + e.getSize().x >= this.getSize().x)
+                ((Missile)e).inverseDirection(MoveableElement.Direction.EST);
+            else if(!destroyElement.contains(e))
                 destroyElement.add(e);
         }
     }
