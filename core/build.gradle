@@ -7,7 +7,12 @@ sourceCompatibility = 1.6
 
 sourceSets.main.java.srcDirs = [ "src/com/mygdx/game/" ]
 sourceSets.test.java.srcDirs = ["src/test/java/"]
-
+test {
+    testLogging {
+        // Show that tests are run in the command-line output
+        events 'started', 'passed'
+    }
+}
 /**
  * Test
  */
