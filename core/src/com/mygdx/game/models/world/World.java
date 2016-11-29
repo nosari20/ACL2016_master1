@@ -84,12 +84,25 @@ public class World implements ScreenGameConfig{
             manageOuts(destroyElement, e);
         }
 
+        if(this.spaceship.getPosition().x <= 0 || this.spaceship.getPosition().x + this.spaceship.getSize().x >= this.getSize().x){
+            this.spaceship.stop();
+        }
+
         return destroyElement;
     }
 
     private void manageOuts(ArrayList destroyElement, Element e) {
         Vector2 v = e.getSize();
         //Verifie si l'objet sort du monde
+
+        if( e instanceof  Missile){
+            if(e.getPosition().x <= 0 || e.getPosition().x + e.getSize().x >= this.getSize().x){
+                //(Missile)e.inverseDirection();
+            }
+        }
+
+
+
         if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
             Gdx.app.log("Left the world", "for always");
             if(!destroyElement.contains(e))
