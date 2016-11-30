@@ -22,21 +22,21 @@ public class World implements ScreenGameConfig{
     private final static int NB_DEPLACEMENT_PATTERN = 5;
     private List<Element> elements;
     private Rectangle worldSurface;
+    private int counter;
     /**
      * The spaceship
      */
     private Spaceship spaceship;
 
     /**
-     * The alien
-     */
-    private Alien alien;
-
-    /**
      * The size of the world
      */
     private Vector2 size;
 
+    /**
+     * Liste d'aliens
+     */
+    private ArrayList<Alien> listAlien;
 
     /**
      * Default constructor
@@ -44,9 +44,11 @@ public class World implements ScreenGameConfig{
     public World(){
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
+        listAlien = new ArrayList<Alien>();
         createAlien();
         this.elements = new ArrayList<Element>();
         worldSurface = new Rectangle(0,0,this.WORLD_WIDTH,this.WORLD_HEIGHT);
+
     }
 
     /**
@@ -57,22 +59,21 @@ public class World implements ScreenGameConfig{
         return spaceship;
     }
 
-    /**
-     * Getter the world's alien instance
-     * @return
-     */
-    public Alien getAlien(){
-        return alien;
-    }
 
     /**
      * Update the world
      */
     public void update() throws GameException{
         spaceship.update(Gdx.graphics.getDeltaTime());
-        if(alien != null)
-            alien.update(Gdx.graphics.getDeltaTime()*2);
+        for(Alien a : listAlien){
+            if(a != null)
+                a.update(Gdx.graphics.getDeltaTime());
+        }
         ArrayList destroyElement = manage();
+        if(counter % 60  == 0)
+            createAlien();
+
+             counter++;
 
         elements.removeAll(destroyElement);
     }
@@ -104,8 +105,6 @@ public class World implements ScreenGameConfig{
             //
         }
 
-
-
         if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
             Gdx.app.log("Left the world", "for always");
             if(e.getPosition().x <= 0)
@@ -119,22 +118,25 @@ public class World implements ScreenGameConfig{
 
     private void manageCollision(ArrayList destroyElement, Element e) throws SpaceshipDieException {
         if(e instanceof Missile) {
-            if (((Missile) e).getExplode() == 0 && alien != null) {
-                if (e.hasCollision(alien)) {
-                    ((Missile) e).collision();
-                    e.setPosition(alien.getPosition());
-                    e.setSize(alien.getSize());
+            for(Alien a : listAlien){
+            if (((Missile) e).getExplode() == 0 && a != null) {
 
-                    //gestion collision Missile avec un Alien
-                    alien.touched(((Missile) e).getPuissance());
-                    if(alien.isDead() == true){
-                        alien.stop();
-                        destroyElement.add(alien);
-                        spaceship.destroy(((Missile) e).getPoid());
-                        //spaceship.destroyAlien(elements, alien,((Missile) e).getPoid());
+                    if (e.hasCollision(a)) {
+                        ((Missile) e).collision();
+                        e.setPosition(a.getPosition());
+                        e.setSize(a.getSize());
+
+                        //gestion collision Missile avec un Alien
+                        a.touched(((Missile) e).getPuissance());
+                        if(a.isDead() == true){
+                            a.stop();
+                            destroyElement.add(a);
+                            spaceship.destroy(((Missile) e).getPoid());
+                            //spaceship.destroyAlien(elements, alien,((Missile) e).getPoid());
+                        }
                     }
-
                 }
+
             }
             if ((((Missile) e).getExplode() > 1f))
                 destroyElement.add(e);
@@ -148,11 +150,12 @@ public class World implements ScreenGameConfig{
                 }
             }
         }
-        if(alien.hasCollision(spaceship)){
-            this.spaceship.spaceshipDie();
-            alien.stop();
-            throw new SpaceshipDieException();
-        }
+        for(Alien a : listAlien)
+            if(a.hasCollision(spaceship)){
+                this.spaceship.spaceshipDie();
+                a.stop();
+                throw new SpaceshipDieException();
+            }
     }
 
     /**
@@ -174,7 +177,10 @@ public class World implements ScreenGameConfig{
     }
 
     public void addMissileAlien(){
-        this.elements.add(new MissileAlien(this, new Vector2(alien.getPosition().x+1,alien.getPosition().y ), MoveableElement.Direction.SOUTH ));
+        for(Alien a : listAlien){
+            this.elements.add(new MissileAlien(this, new Vector2(a.getPosition().x+1,a.getPosition().y ), MoveableElement.Direction.SOUTH ));
+
+        }
     }
 
     public List<Element> getElements() {
@@ -183,6 +189,7 @@ public class World implements ScreenGameConfig{
 
 
     public void createAlien() {
+        Alien alien;
         Random rand = new Random();
 
         int min = 0;
@@ -199,7 +206,8 @@ public class World implements ScreenGameConfig{
             if(pattern == 4) {pattern = 3;}
         }
 
-        this.alien = new Alien(this,new Vector2((x),this.size.y), pattern);
+        alien = new Alien(this,new Vector2((x),this.size.y), pattern);
+        this.listAlien.add(alien);
     }
 
     public void destroyAlien(List<Element> elements, Alien alien,float poid){
@@ -214,6 +222,11 @@ public class World implements ScreenGameConfig{
      */
     private void addPowerUp(){
         this.spaceship.activatePowerUp();
+    }
+
+
+    public ArrayList<Alien> getListAlien(){
+        return this.listAlien;
     }
 
 }

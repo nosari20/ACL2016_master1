@@ -17,6 +17,7 @@ import com.mygdx.game.models.elements.MissileAlien;
 import com.mygdx.game.models.elements.Spaceship;
 import com.mygdx.game.models.world.World;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,8 +31,8 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private Viewport viewport;
     private World world;
     private Spaceship spaceShip;
-    private Alien alien;
     private SpaceshipController spaceshipController;
+    private ArrayList<Alien> listAlien;
     private List<Element> elements;
 
     public GameScreen(GameMain gameMain) {
@@ -43,7 +44,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
         camera.position.set(((this.world.getSize().x * ppux) / 2f), (this.world.getSize().y * ppuy) / 2f, 0);
         camera.update();
         this.spaceShip = world.getSpaceShip();
-        this.alien = world.getAlien();
+        this.listAlien = world.getListAlien();
         this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
 
@@ -63,8 +64,11 @@ public class GameScreen implements Screen,ScreenGameConfig{
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x)*ppux,(spaceShip.getPosition().y)*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
-        if(alien != null)
-            batch.draw(alien.getTexture(), (alien.getPosition().x ) * ppux, (alien.getPosition().y ) * ppuy, alien.getSize().x * ppux, alien.getSize().y * ppuy);
+     for(Alien a : listAlien){
+            if(a != null)
+                batch.draw(a.getTexture(), (a.getPosition().x ) * ppux, (a.getPosition().y ) * ppuy, a.getSize().x * ppux, a.getSize().y * ppuy);
+
+        }
         for(Element e : elements) {
             batch.draw(e.getTexture(), (e.getPosition().x ) * ppux, (e.getPosition().y ) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
         }
@@ -109,7 +113,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
     public void restart(){
         this.world = new World();
         this.spaceShip = world.getSpaceShip();
-        this.alien = world.getAlien();
+        this.listAlien = world.getListAlien();
         this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
     }
