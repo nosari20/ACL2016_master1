@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.models.world.World;
 import com.mygdx.game.ressources.TexturesRepository;
-import java.util.Random;
 
 /**
  * Created by ACH02 on 10/11/2016.
@@ -27,11 +26,10 @@ public class Alien  extends MortalElement {
      *
      * @param position
      */
-    public Alien(World w, Vector2 position) {
+    public Alien(World w, Vector2 position, int pattern) {
         super(w, position, new Vector2(2,3), ALIEN_SPEED, Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
         this.move();
-        Random rand = new Random();
-        this.nb_pattern = rand.nextInt(NB_DEPLACEMENT_PATTERN) + 1;
+        this.nb_pattern = pattern;
         this.changeDirection = true;
         this.vie = 5;
     }

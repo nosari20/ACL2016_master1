@@ -10,6 +10,7 @@ import com.mygdx.game.screens.ScreenGameConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Acherus on 09/11/2016.
@@ -18,6 +19,7 @@ public class World implements ScreenGameConfig{
 
     private final static int WORLD_WIDTH = 30;
     private final static int WORLD_HEIGHT = 35;
+    private final static int NB_DEPLACEMENT_PATTERN = 5;
     private List<Element> elements;
     private Rectangle worldSurface;
     /**
@@ -42,7 +44,7 @@ public class World implements ScreenGameConfig{
     public World(){
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
-        this.alien = new Alien(this,new Vector2((this.size.x/2),this.size.y));
+        createAlien();
         this.elements = new ArrayList<Element>();
         worldSurface = new Rectangle(0,0,this.WORLD_WIDTH,this.WORLD_HEIGHT);
     }
@@ -177,6 +179,27 @@ public class World implements ScreenGameConfig{
 
     public List<Element> getElements() {
         return elements;
+    }
+
+
+    public void createAlien() {
+        Random rand = new Random();
+
+        int min = 0;
+        int max = WORLD_WIDTH - 5;
+        int x = rand.nextInt(max - min + 1) + min;
+        int pattern = rand.nextInt(NB_DEPLACEMENT_PATTERN) + 1;
+
+        if(x <=4) {
+            if(pattern == 2) {pattern = 1;}
+            if(pattern == 3) {pattern = 4;}
+        }
+        if(x >= WORLD_WIDTH -7){
+            if(pattern == 2) {pattern = 1;}
+            if(pattern == 4) {pattern = 3;}
+        }
+
+        this.alien = new Alien(this,new Vector2((x),this.size.y), pattern);
     }
 
     public void destroyAlien(List<Element> elements, Alien alien,float poid){
