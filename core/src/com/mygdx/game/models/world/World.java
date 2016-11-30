@@ -178,7 +178,8 @@ public class World implements ScreenGameConfig{
 
     public void addMissileAlien(){
         for(Alien a : listAlien){
-            this.elements.add(new MissileAlien(this, new Vector2(a.getPosition().x+1,a.getPosition().y ), MoveableElement.Direction.SOUTH ));
+            if(a.isMoving())
+             this.elements.add(new MissileAlien(this, new Vector2(a.getPosition().x+1,a.getPosition().y ), MoveableElement.Direction.SOUTH ));
 
         }
     }
@@ -213,6 +214,7 @@ public class World implements ScreenGameConfig{
     public void destroyAlien(List<Element> elements, Alien alien,float poid){
         elements.remove(alien);
         alien = null;
+        listAlien.remove(alien);
         getSpaceShip().addVie(poid * 0.1f);
 
     }
