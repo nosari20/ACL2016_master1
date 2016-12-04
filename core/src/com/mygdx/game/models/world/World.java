@@ -38,6 +38,23 @@ public class World implements ScreenGameConfig{
      */
     private ArrayList<Alien> listAlien;
 
+
+    /**
+     * Nombre d'alien morts
+     */
+    private int deadAliens;
+
+
+    /**
+     * Seuil d'aliens mort
+     */
+    private int step = 5;
+
+    /**
+     * niveau
+     */
+    private int level = 1;
+
     /**
      * Default constructor
      */
@@ -45,7 +62,10 @@ public class World implements ScreenGameConfig{
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
         listAlien = new ArrayList<Alien>();
-        createAlien();
+
+        for(int i = 0; i<this.level; i++) {
+            createAlien();
+        }
         this.elements = new ArrayList<Element>();
         worldSurface = new Rectangle(0,0,this.WORLD_WIDTH,this.WORLD_HEIGHT);
 
@@ -76,6 +96,8 @@ public class World implements ScreenGameConfig{
              counter++;
 
         elements.removeAll(destroyElement);
+        Gdx.app.log("Alien", elements.size()+"");
+
     }
 
     private ArrayList manage() throws GameException {
@@ -131,6 +153,7 @@ public class World implements ScreenGameConfig{
                         if(a.isDead() == true){
                             a.stop();
                             destroyElement.add(a);
+
                             spaceship.destroy(((Missile) e).getPoid());
                             //spaceship.destroyAlien(elements, alien,((Missile) e).getPoid());
                         }
@@ -229,6 +252,20 @@ public class World implements ScreenGameConfig{
 
     public ArrayList<Alien> getListAlien(){
         return this.listAlien;
+    }
+
+
+
+    private void incrementsAliensdDead(){
+        this.deadAliens ++;
+        if(this.deadAliens >= this.step){
+            this.changeLevel();
+        }
+    }
+
+    private void changeLevel(){
+        this.step = this.step * 2;
+        this.level += 1;
     }
 
 }
