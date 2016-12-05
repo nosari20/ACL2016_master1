@@ -96,6 +96,7 @@ public class World implements ScreenGameConfig{
              counter++;
 
         elements.removeAll(destroyElement);
+        listAlien.removeAll(destroyElement);
         Gdx.app.log("Alien", elements.size()+"");
 
     }
