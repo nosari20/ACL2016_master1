@@ -268,5 +268,9 @@ public class World implements ScreenGameConfig{
         this.level += 1;
     }
 
+    public int getLevel(){
+        return level;
+    }
+
 }
 

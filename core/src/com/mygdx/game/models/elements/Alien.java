@@ -27,7 +27,7 @@ public class Alien  extends MortalElement {
      * @param position
      */
     public Alien(World w, Vector2 position, int pattern) {
-        super(w, position, new Vector2(2,3), ALIEN_SPEED, Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
+        super(w, position, new Vector2(2,3), ALIEN_SPEED+w.getLevel(), Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
         this.move();
         this.nb_pattern = pattern;
         this.changeDirection = true;
