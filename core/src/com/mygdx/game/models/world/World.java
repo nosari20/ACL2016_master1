@@ -97,7 +97,7 @@ public class World implements ScreenGameConfig{
 
         elements.removeAll(destroyElement);
         listAlien.removeAll(destroyElement);
-        Gdx.app.log("Alien", elements.size()+"");
+
 
     }
 
@@ -129,7 +129,7 @@ public class World implements ScreenGameConfig{
         }
 
         if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
-            Gdx.app.log("Left the world", "for always");
+            //Gdx.app.log("Left the world", "for always");
             if(e.getPosition().x <= 0)
                 ((Missile)e).inverseDirection(MoveableElement.Direction.WEST);
             else if(e.getPosition().x + e.getSize().x >= this.getSize().x)
@@ -154,7 +154,7 @@ public class World implements ScreenGameConfig{
                         if(a.isDead() == true){
                             a.stop();
                             destroyElement.add(a);
-
+                            incrementsAliensdDead();
                             spaceship.destroy(((Missile) e).getPoid());
                             //spaceship.destroyAlien(elements, alien,((Missile) e).getPoid());
                         }
@@ -165,13 +165,15 @@ public class World implements ScreenGameConfig{
             if ((((Missile) e).getExplode() > 1f))
                 destroyElement.add(e);
         }else if(e instanceof MissileAlien){
-            if(spaceship.hasCollision(e)){
+            if(e.hasCollision(spaceship)){
 
                 //gestion collision MissileAlien aves le SpaceShip
                 spaceship.touched(((MissileAlien) e).getPuissance());
+                destroyElement.add(e);
                 if(spaceship.isDead() == true) {
                     throw new SpaceshipDieException();
                 }
+
             }
         }
         for(Alien a : listAlien)
@@ -232,6 +234,7 @@ public class World implements ScreenGameConfig{
         }
 
         alien = new Alien(this,new Vector2((x),this.size.y), pattern);
+        alien.setVie(alien.getVie()*this.level ) ;
         this.listAlien.add(alien);
     }
 

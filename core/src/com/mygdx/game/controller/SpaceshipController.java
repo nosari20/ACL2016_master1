@@ -43,7 +43,7 @@ public class SpaceshipController implements InputProcessor{
                     this.spaceShip.move();
                     break;
                 case Input.Keys.SPACE:
-                    Gdx.app.log("Test", "Launched missile !");
+                    // Gdx.app.log("Test", "Launched missile !");
                     this.world.addMissile();
                     break;
             }
