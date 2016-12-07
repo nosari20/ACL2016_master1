@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.GameMain;
@@ -34,6 +36,8 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private SpaceshipController spaceshipController;
     private ArrayList<Alien> listAlien;
     private List<Element> elements;
+    private BitmapFont levelDisplay;
+    private BitmapFont scoreDisplay;
 
     public GameScreen(GameMain gameMain) {
         this.world = new World();
@@ -47,7 +51,8 @@ public class GameScreen implements Screen,ScreenGameConfig{
         this.listAlien = world.getListAlien();
         this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
-
+        levelDisplay = createFont(64);
+        scoreDisplay = createFont(64);
     }
 
     @Override
@@ -73,6 +78,12 @@ public class GameScreen implements Screen,ScreenGameConfig{
             batch.draw(e.getTexture(), (e.getPosition().x ) * ppux, (e.getPosition().y ) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
         }
 
+        //Display score
+        levelDisplay.setColor(1.0f,1.0f,1.0f,1.0f);
+        levelDisplay.draw(batch, "Level "+world.getLevel(), LEVEL_X * ppux,LEVEL_Y * ppuy);
+
+        scoreDisplay.setColor(1.0f,1.0f,1.0f,1.0f);
+        scoreDisplay.draw(batch, "Score "+(int)(spaceShip.getNbKilledAliens() * ALIEN_VALUE) , LEVEL_X * ppux,(LEVEL_Y - 3 )* ppuy);
             batch.end();
 
         try {
@@ -116,5 +127,16 @@ public class GameScreen implements Screen,ScreenGameConfig{
         this.listAlien = world.getListAlien();
         this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
+    }
+
+    private BitmapFont createFont(float dp)
+    {
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/OpenSans-Regular.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+        int fontSize = (int)(dp * Gdx.graphics.getDensity());
+        parameter.size = fontSize;
+
+        return generator.generateFont(parameter);
     }
 }

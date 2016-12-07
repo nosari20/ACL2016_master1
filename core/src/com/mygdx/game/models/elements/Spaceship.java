@@ -107,4 +107,8 @@ public class Spaceship extends MortalElement {
     public boolean isPowerUp(){
         return this.powerUp;
     }
+
+    public int getNbKilledAliens() {
+        return nbAlienDetruit;
+    }
 }
