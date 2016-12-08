@@ -87,9 +87,9 @@ public class World implements ScreenGameConfig{
      */
     public void update() throws GameException{
         spaceship.update(Gdx.graphics.getDeltaTime());
-        for(Alien a : listAlien){
-            if(a != null)
-                a.update(Gdx.graphics.getDeltaTime());
+        for(Element a : elements){
+            if(a != null && a instanceof Alien)
+                ((Alien)a).update(Gdx.graphics.getDeltaTime());
         }
         ArrayList destroyElement = manage();
         if(counter % 60  == 0)
@@ -108,7 +108,9 @@ public class World implements ScreenGameConfig{
 
     private ArrayList manage() throws GameException {
         ArrayList destroyElement = new ArrayList();
-        for(Element e: elements){
+        List<Element> tmp =  new ArrayList<Element>();
+        tmp.addAll(elements);
+        for(Element e: tmp){
             if(e instanceof MoveableElement)
                 ((MoveableElement)e).update(Gdx.graphics.getDeltaTime());
             manageCollision(destroyElement, e);
@@ -214,11 +216,14 @@ public class World implements ScreenGameConfig{
     }
 
     public void addMissileAlien(){
-        for(Alien a : listAlien){
-            if(a.isMoving())
-             this.elements.add(new MissileAlien(this, new Vector2(a.getPosition().x+1,a.getPosition().y ), MoveableElement.Direction.SOUTH ));
+        ArrayList<Element> tmp = new ArrayList<Element>();
+        for(Element a : elements){
+            if(a instanceof Alien)
+                if(((Alien)a).isMoving())
+                 tmp.add(new MissileAlien(this, new Vector2(a.getPosition().x+1,a.getPosition().y ), MoveableElement.Direction.SOUTH ));
 
         }
+        this.elements.addAll(tmp);
     }
 
     public List<Element> getElements() {

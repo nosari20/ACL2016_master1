@@ -63,6 +63,10 @@ public class TexturesRepository {
         }else if(e instanceof MissileAlien){
             return getMissileAlien();
         }else if(e instanceof Missile){
+            if(((Missile) e).getExplode()> 0)
+                return new TextureElement(
+                        TexturesRepository.getInstance().getExplodeAnimation().getKeyFrame(((Missile) e).getExplode(),true)
+            ,new Vector2(3f,3f));
             return getMissile();
         }
         return null;

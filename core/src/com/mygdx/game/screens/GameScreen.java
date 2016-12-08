@@ -72,7 +72,6 @@ public class GameScreen implements Screen,ScreenGameConfig{
         for(Element e : elements) {
             batch.draw(TexturesRepository.getInstance().getTexture(e).getTextureRegion(), (e.getPosition().x ) * ppux, (e.getPosition().y ) * ppuy, TexturesRepository.getInstance().getTexture(e).getSize().x * ppux, TexturesRepository.getInstance().getTexture(e).getSize().y * ppuy);
         }
-
         //Display score
         levelDisplay.setColor(1.0f,1.0f,1.0f,1.0f);
         levelDisplay.draw(batch, "Level "+world.getLevel(), LEVEL_X * ppux,LEVEL_Y * ppuy);
