@@ -98,4 +98,20 @@ public class SpaceshipTest {
         assertTrue("NEW_X = X",new_x==x);
     }
 
+    @Test
+    public void testTouched() {
+        ship.setVie(30);
+        ship.touched(20);
+
+        assertEquals(10, ship.getVie(), 0.001);
+    }
+
+    @Test
+    public void testTouchedDead() {
+        ship.setVie(30);
+        ship.touched(40);
+
+        assertTrue(ship.isDead());
+    }
+
 }

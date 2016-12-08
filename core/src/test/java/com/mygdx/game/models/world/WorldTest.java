@@ -40,5 +40,5 @@ public class WorldTest {
         assertTrue(alien.getPosition().x <= max);
     }
 
-    
+
 }

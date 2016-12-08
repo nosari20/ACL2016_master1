@@ -11,7 +11,7 @@ import com.mygdx.game.ressources.TexturesRepository;
  */
 public class Spaceship extends MortalElement {
 
-    private final int SPACESHIP_SPEED = 12;
+    private final int SPACESHIP_SPEED = 30;
     // Attribut qui compte le nombre d'alien detruit peut etre reutilisé pour le score
     private int nbAlienDetruit;
     //Attribut qui permet d'activer ou non le mode powerUp
