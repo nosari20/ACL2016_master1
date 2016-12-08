@@ -86,7 +86,7 @@ public class World implements ScreenGameConfig{
      * Update the world
      */
     public void update() throws GameException{
-        spaceship.update(Gdx.graphics.getDeltaTime());
+
         for(Element a : elements){
             if(a != null && a instanceof Alien)
                 ((Alien)a).update(Gdx.graphics.getDeltaTime());
@@ -97,7 +97,7 @@ public class World implements ScreenGameConfig{
 
              counter++;
 
-
+        spaceship.update(Gdx.graphics.getDeltaTime());
 
     }
 
@@ -138,6 +138,10 @@ public class World implements ScreenGameConfig{
 
         if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
             //Gdx.app.log("Left the world", "for always");
+            if(e instanceof Spaceship)
+                Gdx.app.log(e.getPosition()+" ", "");
+
+
             if(e.getPosition().x <= 0)
                 if(e.getClass() == Missile.class)
                     ((Missile)e).inverseDirection(MoveableElement.Direction.WEST);
