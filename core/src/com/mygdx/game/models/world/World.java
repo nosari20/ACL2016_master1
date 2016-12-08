@@ -276,5 +276,12 @@ public class World implements ScreenGameConfig{
         return level;
     }
 
+    public static int getNbDeplacementPattern() {
+        return NB_DEPLACEMENT_PATTERN;
+    }
+
+    public static int getWorldWidth() {
+        return WORLD_WIDTH;
+    }
 }
 
