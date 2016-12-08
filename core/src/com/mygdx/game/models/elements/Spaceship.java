@@ -69,13 +69,7 @@ public class Spaceship extends MortalElement {
     }
 
 
-    /**
-     * Getter for texture
-     * @return
-     */
-    public TextureRegion getTexture(){
-        return TexturesRepository.getInstance().getSpaceship();
-    }
+
 
     public void spaceshipDie(){
         this.stop();

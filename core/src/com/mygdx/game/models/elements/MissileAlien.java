@@ -16,10 +16,6 @@ public class MissileAlien extends MoveableElement {
         this.move();
     }
 
-    @Override
-    public TextureRegion getTexture() {
-        return TexturesRepository.getInstance().getMissileAlien();
-    }
 
     public int getPuissance() {
         return puissance;

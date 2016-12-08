@@ -63,10 +63,12 @@ public class World implements ScreenGameConfig{
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
         listAlien = new ArrayList<Alien>();
 
+
+        this.elements = new ArrayList<Element>();
+        this.elements.add(spaceship);
         for(int i = 0; i<this.level; i++) {
             createAlien();
         }
-        this.elements = new ArrayList<Element>();
         worldSurface = new Rectangle(0,0,this.WORLD_WIDTH,this.WORLD_HEIGHT);
 
     }
@@ -95,10 +97,13 @@ public class World implements ScreenGameConfig{
 
              counter++;
 
+
+
+    }
+
+    private void destroy(ArrayList destroyElement) {
         elements.removeAll(destroyElement);
-        listAlien.removeAll(destroyElement);
-
-
+        //listAlien.removeAll(destroyElement);
     }
 
     private ArrayList manage() throws GameException {
@@ -109,6 +114,7 @@ public class World implements ScreenGameConfig{
             manageCollision(destroyElement, e);
             manageOuts(destroyElement, e);
         }
+        destroy(destroyElement);
 
         if(this.spaceship.getPosition().x <= 0 || this.spaceship.getPosition().x + this.spaceship.getSize().x >= this.getSize().x){
             this.spaceship.stop();
@@ -142,22 +148,24 @@ public class World implements ScreenGameConfig{
 
     private void manageCollision(ArrayList destroyElement, Element e) throws SpaceshipDieException {
         if(e instanceof Missile) {
-            for(Alien a : listAlien){
-            if (((Missile) e).getExplode() == 0 && a != null) {
+            for(Element a : elements){
+                if(a instanceof Alien) {
+                    if (((Missile) e).getExplode() == 0 && a != null) {
 
-                    if (e.hasCollision(a)) {
-                        ((Missile) e).collision();
-                        e.setPosition(a.getPosition());
-                        e.setSize(a.getSize());
+                        if (e.hasCollision(a)) {
+                            ((Missile) e).collision();
+                            e.setPosition(a.getPosition());
+                            e.setSize(a.getSize());
 
-                        //gestion collision Missile avec un Alien
-                        a.touched(((Missile) e).getPuissance());
-                        if(a.isDead() == true){
-                            a.stop();
-                            destroyElement.add(a);
-                            incrementsAliensdDead();
-                            spaceship.destroy(((Missile) e).getPoid());
-                            //spaceship.destroyAlien(elements, alien,((Missile) e).getPoid());
+                            //gestion collision Missile avec un Alien
+                            ((Alien)a).touched(((Missile) e).getPuissance());
+                            if (((Alien)a).isDead() == true) {
+                                ((Alien)a).stop();
+                                destroyElement.add(a);
+                                incrementsAliensdDead();
+                                spaceship.destroy(((Missile) e).getPoid());
+                                //spaceship.destroyAlien(elements, alien,((Missile) e).getPoid());
+                            }
                         }
                     }
                 }
@@ -177,11 +185,13 @@ public class World implements ScreenGameConfig{
 
             }
         }
-        for(Alien a : listAlien)
-            if(a.hasCollision(spaceship)){
-                this.spaceship.spaceshipDie();
-                a.stop();
-                throw new SpaceshipDieException();
+        for(Element a : elements)
+            if(a instanceof Alien) {
+                if (a.hasCollision(spaceship)) {
+                    this.spaceship.spaceshipDie();
+                    ((Alien)a).stop();
+                    throw new SpaceshipDieException();
+                }
             }
     }
 
@@ -236,7 +246,8 @@ public class World implements ScreenGameConfig{
 
         alien = new Alien(this,new Vector2((x),this.size.y), pattern);
         alien.setVie(alien.getVie()*this.level ) ;
-        this.listAlien.add(alien);
+        //this.listAlien.add(alien);
+        this.elements.add(alien);
     }
 
     public void destroyAlien(List<Element> elements, Alien alien,float poid){
@@ -271,6 +282,7 @@ public class World implements ScreenGameConfig{
     private void changeLevel(){
         this.step = this.step * 2;
         this.level += 1;
+        this.addPowerUp();
     }
 
     public int getLevel(){
