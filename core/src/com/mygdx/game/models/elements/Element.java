@@ -91,11 +91,6 @@ public abstract class Element{
         return this.position.toString();
     }
 
-    /**
-     * Getter for texture
-     * @return texture
-     */
-    public abstract TextureRegion getTexture();
 
     public boolean hasCollision(Element e){
              if(e != null)

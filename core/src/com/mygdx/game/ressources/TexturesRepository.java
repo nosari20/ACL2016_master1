@@ -4,11 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.models.elements.*;
 
 /**
  * Created by aschmat on 08/11/2016.
  */
 public class TexturesRepository {
+
     private Animation explosionAnimation;
 
     private static TexturesRepository instance = new TexturesRepository();
@@ -17,11 +20,11 @@ public class TexturesRepository {
         return instance;
     }
 
+    private TextureElement spaceship = new TextureElement(new TextureRegion(new Texture("images/SpaceShip.png")),new Vector2(5f,5f));
+    private TextureElement alien = new TextureElement(new TextureRegion(new Texture("images/alien.png")),new Vector2(2f,3f));
+    private TextureElement missile = new TextureElement(new TextureRegion(new Texture("images/missile.png")),new Vector2(0.8f,0.8f));
+    private TextureElement missileAlien = new TextureElement(new TextureRegion(new Texture("images/missile_alien.png")),new Vector2(0.8f,0.8f));
 
-    private TextureRegion spaceship = new TextureRegion(new Texture("images/SpaceShip.png"));
-    private TextureRegion alien = new TextureRegion(new Texture("images/alien.png"));
-    private TextureRegion missile = new TextureRegion(new Texture("images/missile.png"));
-    private TextureRegion missileAlien = new TextureRegion(new Texture("images/missile_alien.png"));
 
     private static final float EXPLOSION_FRAME_DURATION = 0.06f;
 
@@ -34,23 +37,37 @@ public class TexturesRepository {
         explosionAnimation.setPlayMode(Animation.PlayMode.NORMAL);
     }
 
-    public TextureRegion getMissileAlien(){return missileAlien;}
+    public TextureElement getMissileAlien(){return missileAlien;}
 
-    public TextureRegion getMissile() {
+    public TextureElement getMissile() {
         return missile;
     }
 
-    public TextureRegion getSpaceship() {
+    public TextureElement getSpaceship() {
         return spaceship;
     }
 
-    public TextureRegion getAlien() {
+    public TextureElement getAlien() {
         return alien;
     }
 
     public Animation getExplodeAnimation(){
         return explosionAnimation;
     }
+
+    public TextureElement getTexture(Element e){
+        if(e instanceof Spaceship){
+            return getSpaceship();
+        }else if(e instanceof Alien) {
+            return getAlien();
+        }else if(e instanceof MissileAlien){
+            return getMissileAlien();
+        }else if(e instanceof Missile){
+            return getMissile();
+        }
+        return null;
+    }
+
 }
 
 

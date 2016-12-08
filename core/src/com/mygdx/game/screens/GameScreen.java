@@ -18,6 +18,7 @@ import com.mygdx.game.models.elements.Element;
 import com.mygdx.game.models.elements.MissileAlien;
 import com.mygdx.game.models.elements.Spaceship;
 import com.mygdx.game.models.world.World;
+import com.mygdx.game.ressources.TexturesRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,14 +69,8 @@ public class GameScreen implements Screen,ScreenGameConfig{
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(spaceShip.getTexture(), (spaceShip.getPosition().x)*ppux,(spaceShip.getPosition().y)*ppuy, spaceShip.getSize().x*ppux,spaceShip.getSize().y*ppuy);
-     for(Alien a : listAlien){
-            if(a != null)
-                batch.draw(a.getTexture(), (a.getPosition().x ) * ppux, (a.getPosition().y ) * ppuy, a.getSize().x * ppux, a.getSize().y * ppuy);
-
-        }
         for(Element e : elements) {
-            batch.draw(e.getTexture(), (e.getPosition().x ) * ppux, (e.getPosition().y ) * ppuy, e.getSize().x * ppux, e.getSize().y * ppuy);
+            batch.draw(TexturesRepository.getInstance().getTexture(e).getTextureRegion(), (e.getPosition().x ) * ppux, (e.getPosition().y ) * ppuy, TexturesRepository.getInstance().getTexture(e).getSize().x * ppux, TexturesRepository.getInstance().getTexture(e).getSize().y * ppuy);
         }
 
         //Display score

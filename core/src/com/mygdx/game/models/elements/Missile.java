@@ -25,7 +25,8 @@ public class Missile extends MoveableElement {
     public TextureRegion getTexture() {
         if (explode != 0)
             return TexturesRepository.getInstance().getExplodeAnimation().getKeyFrame(explode,true);
-        return TexturesRepository.getInstance().getMissile();
+       // return TexturesRepository.getInstance().getMissile();
+        return null;
     }
 
     public void collision(){

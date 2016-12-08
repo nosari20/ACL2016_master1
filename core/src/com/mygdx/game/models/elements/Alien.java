@@ -55,13 +55,7 @@ public class Alien  extends MortalElement {
     }
 
 
-    /**
-     * Getter for texture
-     * @return
-     */
-    public TextureRegion getTexture(){
-        return TexturesRepository.getInstance().getAlien();
-    }
+
 
     /**
      * Update the elements properties with the controler depending on the delta time
