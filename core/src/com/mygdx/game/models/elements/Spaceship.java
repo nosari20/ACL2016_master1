@@ -1,17 +1,15 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.models.world.World;
-import com.mygdx.game.ressources.TexturesRepository;
 
 /**
  * Created by ACH02 on 08/11/2016.
  */
 public class Spaceship extends MortalElement {
 
-    private final int SPACESHIP_SPEED = 30;
+    private final int SPACESHIP_SPEED = 12;
     // Attribut qui compte le nombre d'alien detruit peut etre reutilisé pour le score
     private int nbAlienDetruit;
     //Attribut qui permet d'activer ou non le mode powerUp
