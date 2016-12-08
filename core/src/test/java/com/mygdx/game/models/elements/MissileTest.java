@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import static com.mygdx.game.models.elements.MoveableElement.Direction.NORTH;
+import static com.mygdx.game.models.elements.MoveableElement.Direction.NORTHEAST;
+import static com.mygdx.game.models.elements.MoveableElement.Direction.NORTHWEST;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -51,10 +53,10 @@ public class MissileTest {
     @Test
     public void inverseDirection() throws Exception {
         missile.inverseDirection(MoveableElement.Direction.WEST);
-        assertEquals(MoveableElement.Direction.NORTHEAST, missile.getDirection());
+        assertEquals(NORTHEAST, missile.getDirection());
 
         missile.inverseDirection(MoveableElement.Direction.EST);
-        assertEquals(MoveableElement.Direction.NORTHWEST, missile.getDirection());
+        assertEquals(NORTHWEST, missile.getDirection());
     }
 
     @Test
@@ -69,5 +71,35 @@ public class MissileTest {
         int speed = missile.getSpeed();
         assertTrue(newX == x);
         assertTrue(newY == y + (float) speed * 10);
+    }
+
+    @Test
+    public void updateTestNorthEast() {
+        missile.setDirection(NORTHEAST);
+        float x = missile.getPosition().x;
+        float y = missile.getPosition().y;
+        missile.move();
+        int delta = 10;
+        missile.update(delta);
+        float newX = missile.getPosition().x;
+        float newY = missile.getPosition().y;
+        int speed = missile.getSpeed();
+        assertTrue(newX == x + (float) (Math.cos(Math.PI / 4) * speed * delta));
+        assertTrue(newY == y + (float) (Math.sin(Math.PI / 4) * speed * delta));
+    }
+
+    @Test
+    public void updateTestNorthWest() {
+        missile.setDirection(NORTHWEST);
+        float x = missile.getPosition().x;
+        float y = missile.getPosition().y;
+        missile.move();
+        int delta = 10;
+        missile.update(delta);
+        float newX = missile.getPosition().x;
+        float newY = missile.getPosition().y;
+        int speed = missile.getSpeed();
+        assertTrue(newX == x + (float) (Math.cos(Math.PI * 3 / 4) * speed * delta));
+        assertTrue(newY == y + (float) (Math.sin(Math.PI * 3 / 4) * speed * delta));
     }
 }
