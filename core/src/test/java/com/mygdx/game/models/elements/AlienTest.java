@@ -21,13 +21,14 @@ public class AlienTest {
     @org.junit.Before
     public void setUp() throws Exception {
         this.world = new World();
-        this.alien = new Alien(world, new Vector2(8,10));
+        this.alien = new Alien(world, new Vector2(8,10), 2);
     }
 
     @Test
     public void TestValeurConstructeur() {
         assertEquals(new Vector2(8,10), alien.getPosition());
-        assertEquals(alien.getSpeed(), 3f, 0.001);
+        assertEquals(alien.getNb_pattern(), 2);
+        assertEquals(alien.getSpeed(), 4f, 0.001);
         assertEquals(alien.isMoving(), true);
         assertEquals(alien.getDirection(), MoveableElement.Direction.NORTH);
         assertEquals(alien.world, this.world);
@@ -41,7 +42,9 @@ public class AlienTest {
     @Test
     public void TestNullConstructeur() {
         thrown.expect(NullPointerException.class);
-        Alien alien2 = new Alien(null, null);
+        new Alien(null, null, -5);
     }
+
+
 
 }
