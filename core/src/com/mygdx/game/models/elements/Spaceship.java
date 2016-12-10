@@ -13,10 +13,9 @@ public class Spaceship extends MortalElement {
     // Attribut qui compte le nombre d'alien detruit peut etre reutilisé pour le score
     private int nbAlienDetruit;
     //Attribut qui permet d'activer ou non le mode powerUp
-    private boolean powerUp;
-    //Attribut qui permet de mettre fin au powerup
-    private int counter;
-    private static final int nbSec = 10;
+    private float powerUp;
+
+    private static final float POWERUP_TIME = 3;
     /**
      * Default constructor
      *
@@ -27,8 +26,7 @@ public class Spaceship extends MortalElement {
         this.setSpeed(SPACESHIP_SPEED);
         this.vie = 100;
         this.nbAlienDetruit = 0;
-        this.powerUp = true;
-        this.counter = 0;
+        this.powerUp = POWERUP_TIME;
     }
 
     /**
@@ -49,14 +47,13 @@ public class Spaceship extends MortalElement {
      * @param deltaTime
      */
     @Override
-    public void update(float deltaTime){
+    public void update(float deltaTime) {
         super.update(deltaTime);
-        if(powerUp && counter < (60 * nbSec))
-            counter++;
-        else {
-            stopPowerUp();
-            counter = 0;
-        }
+        Gdx.app.log("+++++++++++++++++++++++++++++","");
+        Gdx.app.log("DeltaTime", deltaTime+"");
+        Gdx.app.log("PwerUp", this.powerUp+"");
+        Gdx.app.log("+++++++++++++++++++++++++++++","");
+        powerUp -= deltaTime;
     }
     /**
      *
@@ -86,18 +83,17 @@ public class Spaceship extends MortalElement {
      * active le mode powerUp
      */
     public void activatePowerUp() {
-        this.powerUp = true;
+        if(powerUp <0)
+            this.powerUp = 0;
+        this.powerUp += POWERUP_TIME;
     }
 
     /**
      * Stoppe le mode powerUp
      */
-    public void stopPowerUp(){
-        this.powerUp = false;
-    }
 
     public boolean isPowerUp(){
-        return this.powerUp;
+        return this.powerUp >0f;
     }
 
     public int getNbKilledAliens() {

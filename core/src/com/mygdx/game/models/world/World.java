@@ -111,16 +111,23 @@ public class World implements ScreenGameConfig{
         List<Element> tmp =  new ArrayList<Element>();
         tmp.addAll(elements);
         for(Element e: tmp){
-            if(e instanceof MoveableElement)
-                ((MoveableElement)e).update(Gdx.graphics.getDeltaTime());
+            if(e instanceof MoveableElement) {
+                ((MoveableElement) e).update(Gdx.graphics.getDeltaTime());
+
+                //replacement
+                if(e.getPosition().x<0){
+                    e.setPosition(e.getPosition().set(0, e.getPosition().y));
+                }
+                if(e.getPosition().x + e.getSize().x>this.size.x){
+                    e.setPosition(e.getPosition().set(this.size.x - e.getSize().x, e.getPosition().y));
+                }
+            }
             manageCollision(destroyElement, e);
             manageOuts(destroyElement, e);
         }
         destroy(destroyElement);
 
-        if(this.spaceship.getPosition().x <= 0 || this.spaceship.getPosition().x + this.spaceship.getSize().x >= this.getSize().x){
-            this.spaceship.stop();
-        }
+
 
         return destroyElement;
     }
@@ -128,6 +135,7 @@ public class World implements ScreenGameConfig{
     private void manageOuts(ArrayList destroyElement, Element e) {
         Vector2 v = e.getSize();
         //Verifie si l'objet sort du monde
+
 
         if( e instanceof  Missile){
             if(e.getPosition().x <= 0 || e.getPosition().x + e.getSize().x >= this.getSize().x){
@@ -149,6 +157,9 @@ public class World implements ScreenGameConfig{
                 ((Missile)e).inverseDirection(MoveableElement.Direction.EST);
             else if(!destroyElement.contains(e))
                 destroyElement.add(e);
+
+
+
         }
     }
 
