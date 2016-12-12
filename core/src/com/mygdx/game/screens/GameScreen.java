@@ -49,7 +49,6 @@ public class GameScreen implements Screen,ScreenGameConfig{
         camera.position.set(((this.world.getSize().x * ppux) / 2f), (this.world.getSize().y * ppuy) / 2f, 0);
         camera.update();
         this.spaceShip = world.getSpaceShip();
-        this.listAlien = world.getListAlien();
         this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
         levelDisplay = createFont(64);
@@ -118,7 +117,6 @@ public class GameScreen implements Screen,ScreenGameConfig{
     public void restart(){
         this.world = new World();
         this.spaceShip = world.getSpaceShip();
-        this.listAlien = world.getListAlien();
         this.spaceshipController = new SpaceshipController(this.world);
         Gdx.input.setInputProcessor(this.spaceshipController);
     }

@@ -33,10 +33,6 @@ public class World implements ScreenGameConfig{
      */
     private Vector2 size;
 
-    /**
-     * Liste d'aliens
-     */
-    private ArrayList<Alien> listAlien;
 
 
     /**
@@ -61,7 +57,6 @@ public class World implements ScreenGameConfig{
     public World(){
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
-        listAlien = new ArrayList<Alien>();
 
 
         this.elements = new ArrayList<Element>();
@@ -270,24 +265,13 @@ public class World implements ScreenGameConfig{
         this.elements.add(alien);
     }
 
-    public void destroyAlien(List<Element> elements, Alien alien,float poid){
-        elements.remove(alien);
-        alien = null;
-        listAlien.remove(alien);
-        getSpaceShip().addVie(poid * 0.1f);
 
-    }
 
     /**
      * Appelle powerUp() dans spaceship et met a jour un boolean
      */
     private void addPowerUp(){
         this.spaceship.activatePowerUp();
-    }
-
-
-    public ArrayList<Alien> getListAlien(){
-        return this.listAlien;
     }
 
 
