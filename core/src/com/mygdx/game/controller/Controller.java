@@ -13,12 +13,13 @@ public class Controller implements InputProcessor{
     }
     @Override
     public boolean keyDown(int keycode) {
-        adapter.action(keycode);
+        adapter.actionKeyDown(keycode);
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
+        adapter.actionKeyUp(keycode);
         return false;
     }
 

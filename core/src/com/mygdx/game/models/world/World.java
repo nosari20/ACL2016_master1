@@ -15,7 +15,7 @@ import java.util.Random;
 /**
  * Created by Acherus on 09/11/2016.
  */
-public class World implements ScreenGameConfig{
+public class World implements ScreenGameConfig, WorldInterface{
 
     private final static int WORLD_WIDTH = 30;
     private final static int WORLD_HEIGHT = 35;
@@ -94,6 +94,16 @@ public class World implements ScreenGameConfig{
 
         spaceship.update(Gdx.graphics.getDeltaTime());
 
+    }
+
+    @Override
+    public int getHeight() {
+        return (int) getSize().y;
+    }
+
+    @Override
+    public int getWidth() {
+        return (int) getSize().x;
     }
 
     private void destroy(ArrayList destroyElement) {
@@ -299,6 +309,25 @@ public class World implements ScreenGameConfig{
 
     public static int getWorldWidth() {
         return WORLD_WIDTH;
+    }
+
+    public void setSpaceShipDirection(MoveableElement.Direction spaceShipDirection) {
+        this.spaceship.setDirection(spaceShipDirection);
+    }
+
+    public void makeSpaceShipMove() {
+        this.spaceship.move();
+    }
+
+    public void makeSpaceShipStop() {
+        this.spaceship.stop();
+    }
+    public MoveableElement.Direction getSpaceShipDirection() {
+        return this.spaceship.getDirection();
+    }
+
+    public float getNbKilledAliens() {
+        return spaceship.getNbKilledAliens();
     }
 }
 
