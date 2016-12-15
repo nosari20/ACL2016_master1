@@ -39,7 +39,19 @@ public class SpaceshipTest {
     @Test
     public void TestNullConstructeur() {
         thrown.expect(NullPointerException.class);
-        Spaceship ship2 = new Spaceship(null, null);
+        new Spaceship(null, null);
+    }
+
+    @Test
+    public void TestConstructeurHorsMonde() {
+        thrown.expect(Exception.class);
+        new Spaceship(world, new Vector2(-30,-30));
+    }
+
+    @Test
+    public void testConstructeurNull() {
+        thrown.expect(NullPointerException.class);
+        new Spaceship(world, new Vector2(-30,-30));
     }
 
     @Test
@@ -99,6 +111,19 @@ public class SpaceshipTest {
     }
 
     @Test
+    public void destroy() throws Exception {
+        ship.destroy(10);
+        assertEquals(100, ship.getVie(), 0.0001);
+        assertEquals(1, ship.getNbKilledAliens());
+    }
+
+    @Test
+    public void destroyNegatif() throws Exception {
+        thrown.expect(Exception.class);
+        ship.destroy(-10);
+    }
+
+    @Test
     public void testTouched() {
         ship.setVie(30);
         ship.touched(20);
@@ -114,4 +139,19 @@ public class SpaceshipTest {
         assertTrue(ship.isDead());
     }
 
+    @Test
+    public void addVie() throws Exception {
+        ship.addVie(1000);
+        assertEquals(100, ship.getVie(), 0.001);
+
+        ship.setVie(30);
+        ship.addVie(10);
+        assertEquals(40, ship.getVie(), 0.001);
+    }
+
+    @Test
+    public void addVieNegatif() throws Exception {
+        thrown.expect(Exception.class);
+        ship.addVie(-30);
+    }
 }

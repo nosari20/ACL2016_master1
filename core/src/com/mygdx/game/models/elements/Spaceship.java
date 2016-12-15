@@ -1,6 +1,5 @@
 package com.mygdx.game.models.elements;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.models.world.World;
 
@@ -37,7 +36,7 @@ public class Spaceship extends MortalElement {
     public void destroy(float missileWeight) {
         this.addVie(missileWeight * 0.1f);
         this.nbAlienDetruit++;
-        Gdx.app.log("Le pv monte de "+(missileWeight * 0.1f), "vie actuel" +this.vie);
+        //Gdx.app.log("Le pv monte de "+(missileWeight * 0.1f), "vie actuel" +this.vie);
     }
 
     /**
@@ -49,10 +48,10 @@ public class Spaceship extends MortalElement {
     @Override
     public void update(float deltaTime) {
         super.update(deltaTime);
-        Gdx.app.log("+++++++++++++++++++++++++++++","");
-        Gdx.app.log("DeltaTime", deltaTime+"");
-        Gdx.app.log("PwerUp", this.powerUp+"");
-        Gdx.app.log("+++++++++++++++++++++++++++++","");
+        //Gdx.app.log("+++++++++++++++++++++++++++++","");
+        //Gdx.app.log("DeltaTime", deltaTime+"");
+        //Gdx.app.log("PwerUp", this.powerUp+"");
+        //Gdx.app.log("+++++++++++++++++++++++++++++","");
         powerUp -= deltaTime;
     }
     /**
@@ -94,6 +93,10 @@ public class Spaceship extends MortalElement {
 
     public boolean isPowerUp(){
         return this.powerUp >0f;
+    }
+
+    public float getPowerUp() {
+        return powerUp;
     }
 
     public int getNbKilledAliens() {

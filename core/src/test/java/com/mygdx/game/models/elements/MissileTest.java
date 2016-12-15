@@ -44,6 +44,30 @@ public class MissileTest {
     }
 
     @Test
+    public void testConstructeurHorsMonde() {
+        thrown.expect(Exception.class);
+        new Missile(this.world, new Vector2(-30,-30), MoveableElement.Direction.SOUTH);
+    }
+
+    @Test
+    public void constructeurTestMouvementNull() throws  Exception{
+        thrown.expect(Exception.class);
+        new Missile(world, new Vector2(10,10), null);
+    }
+
+    @Test
+    public void constructeurTestMondeNull() throws  Exception{
+        thrown.expect(Exception.class);
+        new Missile(null, new Vector2(10,10), MoveableElement.Direction.SOUTH);
+    }
+
+    @Test
+    public void constructeurTestPositionNull() throws  Exception{
+        thrown.expect(Exception.class);
+        new Missile(world, null, MoveableElement.Direction.SOUTH);
+    }
+
+    @Test
     public void collision() throws Exception {
         missile.collision();
         assertEquals(false, missile.isMoving());

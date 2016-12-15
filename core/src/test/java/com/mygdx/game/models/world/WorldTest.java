@@ -64,5 +64,22 @@ public class WorldTest {
         assertTrue(alien.getPosition().x <= max);
     }
 
+    @Test
+    public void addMissileTest() throws Exception {
+
+        world.addMissile();
+        world.getSpaceShip().activatePowerUp();
+        assertEquals(5, world.getElements().size()); //1 spaceShip + 1 alien + 3 missiles
+
+        world.getSpaceShip().update(100);
+        world.addMissile();
+        assertEquals(6, world.getElements().size()); //1 spaceShip + 1 alien + 4 missiles
+    }
+
+    @Test
+    public void addMissileAlien() throws Exception {
+        world.addMissileAlien();
+        assertEquals(3, world.getElements().size()); //1 spaceShip + 1 alien + 1 missiles
+    }
 
 }

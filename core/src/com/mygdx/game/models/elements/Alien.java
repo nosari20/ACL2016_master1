@@ -1,10 +1,8 @@
 package com.mygdx.game.models.elements;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.models.world.World;
-import com.mygdx.game.ressources.TexturesRepository;
 
 /**
  * Created by ACH02 on 10/11/2016.
@@ -217,6 +215,9 @@ public class Alien  extends MortalElement {
         this.changeDirection = true;
     }
 
+    public int getNb_frame() {
+        return nb_frame;
+    }
 }
 
 

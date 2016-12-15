@@ -30,6 +30,24 @@ public class MissileAlienTest {
         assertEquals(true, missileAlien.isMoving());
     }
 
+    @Test
+    public void constructeurTestHorsMonde() throws  Exception{
+        thrown.expect(Exception.class);
+        new MissileAlien(world, new Vector2(-30,-30), MoveableElement.Direction.SOUTH);
+    }
+
+    @Test
+    public void constructeurTestMouvementNull() throws  Exception{
+        thrown.expect(Exception.class);
+        new MissileAlien(world, new Vector2(10,10), null);
+    }
+
+    @Test
+    public void constructeurTestMondeNull() throws  Exception{
+        thrown.expect(Exception.class);
+        new MissileAlien(null, new Vector2(10,10), MoveableElement.Direction.SOUTH);
+    }
+
     @Rule
     public ExpectedException thrown= ExpectedException.none();
 

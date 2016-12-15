@@ -329,5 +329,9 @@ public class World implements ScreenGameConfig, WorldInterface{
     public float getNbKilledAliens() {
         return spaceship.getNbKilledAliens();
     }
+
+    public int getCounter() {
+        return counter;
+    }
 }
 
