@@ -45,10 +45,20 @@ public abstract class Adapter implements ScreenGameConfig {
     }
 
 
-    public abstract int  getHeight() ;
-    public abstract int  getWidth() ;
 
-    public abstract List<Element> getElements() ;
+    public int getHeight() {
+        return (int) this.world.getHeight();
+    }
+
+
+    public int getWidth() {
+        return (int) this.world.getWidth();
+    }
+
+
+    public List<Element> getElements() {
+        return world.getElements();
+    }
 
 
 

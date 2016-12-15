@@ -61,20 +61,7 @@ public class SpaceInvaderAdapter extends Adapter {
 
     }
 
-    @Override
-    public int getHeight() {
-        return (int) this.world.getHeight();
-    }
 
-    @Override
-    public int getWidth() {
-        return (int) this.world.getWidth();
-    }
-
-    @Override
-    public List<Element> getElements() {
-        return world.getElements();
-    }
 
     @Override
     public void actionKeyDown(int keycode) {
