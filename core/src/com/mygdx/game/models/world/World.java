@@ -119,7 +119,7 @@ public class World implements ScreenGameConfig, WorldInterface{
             if(e instanceof MoveableElement) {
                 ((MoveableElement) e).update(Gdx.graphics.getDeltaTime());
 
-                if(! (e instanceof Missile || e instanceof MissileAlien  ) {
+                if(! (e instanceof Missile || e instanceof MissileAlien  )) {
                     //replacement
                     if (e.getPosition().x < 0) {
                         e.setPosition(e.getPosition().set(0, e.getPosition().y));
