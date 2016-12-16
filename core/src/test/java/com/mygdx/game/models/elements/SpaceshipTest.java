@@ -119,8 +119,8 @@ public class SpaceshipTest {
 
     @Test
     public void destroyNegatif() throws Exception {
-        thrown.expect(Exception.class);
         ship.destroy(-10);
+        assertEquals(100, ship.getVie(), 0.001);
     }
 
     @Test
@@ -147,11 +147,12 @@ public class SpaceshipTest {
         ship.setVie(30);
         ship.addVie(10);
         assertEquals(40, ship.getVie(), 0.001);
+
     }
 
     @Test
     public void addVieNegatif() throws Exception {
-        thrown.expect(Exception.class);
         ship.addVie(-30);
+        assertEquals(100, ship.getVie(), 0.001);
     }
 }
