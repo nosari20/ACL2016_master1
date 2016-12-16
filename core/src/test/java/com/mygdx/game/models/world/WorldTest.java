@@ -2,6 +2,7 @@ package com.mygdx.game.models.world;
 
 import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Element;
+import com.mygdx.game.models.elements.Spaceship;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -105,5 +106,58 @@ public class WorldTest {
         assertEquals(3, world.getLevel(), 0.001);
     }
 
+    @Test
+    public void testLevelChangeAlienSpeed() throws Exception {
 
+        Alien alien1 = (Alien)world.getElements().get(1);
+        int step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+
+        step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+        world.createAlien();
+        Alien alien2 = (Alien)world.getElements().get(2);
+        assertTrue(alien1.getSpeed() < alien2.getSpeed());
+    }
+
+    @Test
+    public void testLevelChangeAlienLife() throws Exception {
+
+        Alien alien1 = (Alien)world.getElements().get(1);
+        int step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+
+        step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+        world.createAlien();
+        Alien alien2 = (Alien)world.getElements().get(2);
+        assertTrue(alien1.getVie() < alien2.getVie());
+    }
+
+    @Test
+    public void testLevelChangeActivatePowerUp() throws Exception {
+
+        Spaceship ship = world.getSpaceShip();
+        int step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+
+        ship.update(1000);
+
+        step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+        world.createAlien();
+        assertTrue(ship.getPowerUp() >0);
+    }
 }
