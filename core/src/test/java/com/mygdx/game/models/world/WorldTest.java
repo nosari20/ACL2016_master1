@@ -82,4 +82,30 @@ public class WorldTest {
         assertEquals(3, world.getElements().size()); //1 spaceShip + 1 alien + 1 missiles
     }
 
+    @Test
+    public void incrementAliensDead() throws Exception {
+        for(int i=0; i<5; i++){
+            world.incrementsAliensdDead();
+        }
+        assertEquals(5, world.getDeadAliens(), 0.001);
+    }
+
+    @Test
+    public void testChangeLevel() throws Exception {
+        //System.out.println(world.getStep());
+        int step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+            System.out.println(world.getStep());
+        }
+        assertEquals(2, world.getLevel(), 0.001);
+
+        step = world.getStep();
+        for(int i=0; i<step; i++){
+            world.incrementsAliensdDead();
+        }
+        assertEquals(3, world.getLevel(), 0.001);
+    }
+
+
 }

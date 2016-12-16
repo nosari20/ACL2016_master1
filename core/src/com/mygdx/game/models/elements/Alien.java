@@ -2,6 +2,7 @@ package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Timer;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.world.World;
 
 /**
@@ -27,7 +28,7 @@ public class Alien  extends MortalElement {
     public Alien(World w, Vector2 position, int pattern)  throws GameException{
         super(w, position, new Vector2(2,3), ALIEN_SPEED+w.getLevel(), Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
         if(pattern <1 || pattern>5){
-            throw new GameException('pattern <1 or >5');
+            throw new GameException("pattern <1 or >5");
         }
         this.move();
         this.nb_pattern = pattern;
@@ -89,7 +90,11 @@ public class Alien  extends MortalElement {
 
         nb_frame++;
         if((nb_frame%120 ==0 && isMoving)){
-            this.world.addMissileAlien();
+            try {
+                this.world.addMissileAlien();
+            } catch (GameException e) {
+                e.printStackTrace();
+            }
         }
     }
 

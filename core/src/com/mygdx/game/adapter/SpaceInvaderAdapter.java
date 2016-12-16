@@ -10,15 +10,13 @@ import com.mygdx.game.models.elements.MoveableElement;
 import com.mygdx.game.models.world.World;
 import com.mygdx.game.ressources.TexturesRepository;
 
-import java.util.List;
-
 /**
  * Created by aschmat on 10/12/2016.
  */
 public class SpaceInvaderAdapter extends Adapter {
     private BitmapFont levelDisplay;
     private BitmapFont scoreDisplay;
-    public SpaceInvaderAdapter(){
+    public SpaceInvaderAdapter() throws GameException{
         super(new World());
         levelDisplay = createFont(64);
         scoreDisplay = createFont(64);
@@ -38,7 +36,11 @@ public class SpaceInvaderAdapter extends Adapter {
 
     @Override
     public void restart() {
-        this.world = new World();
+        try {
+            this.world = new World();
+        } catch (GameException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -78,7 +80,11 @@ public class SpaceInvaderAdapter extends Adapter {
                 break;
             case Input.Keys.SPACE:
                 // Gdx.app.log("Test", "Launched missile !");
-                ((World)world).addMissile();
+                try {
+                    ((World)world).addMissile();
+                } catch (GameException e) {
+                    e.printStackTrace();
+                }
                 break;
         }
     }

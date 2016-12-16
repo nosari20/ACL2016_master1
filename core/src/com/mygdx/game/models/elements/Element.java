@@ -1,9 +1,8 @@
 package com.mygdx.game.models.elements;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.world.World;
 
 
@@ -33,22 +32,22 @@ public abstract class Element{
      * @param position
      */
     public Element(World w,Vector2 position) throws GameException {
-        if(w == null){
-            throw new GameException('world is null');
-        }
-        if( == null){
-            throw new GameException('position is null');
-        }else{
-            if(position.x <0 || position.x+this.size.x>w.getWidth() || position.y <0 || position.y+this.size.y>w.getHeight()){
-                throw new GameException('position is out of the world');
-            }
-        }
+
         this.position = new Vector2(position);
         this.size = new Vector2(5f,5f);
         bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,5f,4f);
         this.world = w;
 
-
+        if(w == null){
+            throw new GameException("world is null");
+        }
+        if(position == null){
+            throw new GameException("position is null");
+        }else{
+            if(position.x <0 || position.x+this.size.x>w.getWidth() || position.y <0 || position.y+this.size.y>w.getHeight()){
+                throw new GameException("position is out of the world");
+            }
+        }
     }
 
 
@@ -57,28 +56,29 @@ public abstract class Element{
      * @param position
      */
     public Element(World w,Vector2 position, Vector2 size)  throws GameException {
-        if(w == null){
-            throw new GameException('world is null');
-        }
-        if(size == null){
-            throw new GameException('size is null');
-        }else{
-            if(size.x<0 || size.y<0){
-                throw new GameException('size has negative value');
-            }
-        }
-        if( == null){
-            throw new GameException('position is null');
-        }else{
-            if(position.x <0 || position.x+size.x>w.getWidth() || position.y <0 || position.y+size.y>w.getHeight()){
-                throw new GameException('position is out of the world');
-            }
-        }
 
         this.position = new Vector2(position);
         this.size = size;
         bbox = new com.badlogic.gdx.math.Rectangle(getPosition().x,getPosition().y,size.x,size.y-0.5f);
         this.world = w;
+
+        if(w == null){
+            throw new GameException("world is null");
+        }
+        if(size == null){
+            throw new GameException("size is null");
+        }else{
+            if(size.x<0 || size.y<0){
+                throw new GameException("size has negative value");
+            }
+        }
+        if(position == null){
+            throw new GameException("position is null");
+        }else{
+            if(position.x <0 || position.x+size.x>w.getWidth() || position.y <0){
+                throw new GameException("position is out of the world");
+            }
+        }
     }
 
 
