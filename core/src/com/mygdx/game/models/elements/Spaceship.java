@@ -1,6 +1,7 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.world.World;
 
 /**
@@ -71,10 +72,12 @@ public class Spaceship extends MortalElement {
     }
 
     public void addVie(float add){
-        if(vie+add > 100){
-            this.setVie(100);
-        }else{
-            this.setVie(vie+add);
+        if(add > 0) {
+            if (vie + add > 100) {
+                this.setVie(100);
+            } else {
+                this.setVie(vie + add);
+            }
         }
     }
 

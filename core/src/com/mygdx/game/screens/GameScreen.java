@@ -14,9 +14,9 @@ import com.mygdx.game.adapter.Adapter;
 import com.mygdx.game.adapter.AdapterFactory;
 import com.mygdx.game.adapter.GamesToPlug;
 import com.mygdx.game.controller.Controller;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.elements.Alien;
 import com.mygdx.game.models.elements.Element;
-import com.mygdx.game.ressources.TexturesRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class GameScreen implements Screen,ScreenGameConfig{
     private List<Element> elements;
     private Adapter game;
     private Controller controller;
-    public GameScreen(GameMain gameMain) {
+    public GameScreen(GameMain gameMain) throws GameException {
         this.game = AdapterFactory.getAdapter(GamesToPlug.SPACEINVADER);
         this.controller = new Controller(game);
         this.gm = gameMain;

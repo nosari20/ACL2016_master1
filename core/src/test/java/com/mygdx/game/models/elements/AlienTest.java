@@ -27,9 +27,9 @@ public class AlienTest {
     }
 
     @Test
-    public void TestValeurConstructeur() {
+    public void TestValeurConstructeur() throws Exception{
         assertEquals(new Vector2(8,10), alien.getPosition());
-        assertEquals(alien.getNb_pattern(), 2);
+        assertEquals(alien.getNb_pattern(), 1);
         assertEquals(alien.getSpeed(), 4f, 0.001);
         assertEquals(alien.isMoving(), true);
         assertEquals(alien.getDirection(), MoveableElement.Direction.NORTH);
@@ -42,13 +42,13 @@ public class AlienTest {
     public ExpectedException thrown= ExpectedException.none();
 
     @Test
-    public void TestNullConstructeur() {
+    public void TestNullConstructeur() throws Exception{
         thrown.expect(NullPointerException.class);
         new Alien(null, null, 1);
     }
 
     @Test
-    public void testConstructeurHorsMonde() {
+    public void testConstructeurHorsMonde() throws Exception{
         thrown.expect(Exception.class);
         new Alien(this.world, new Vector2(-30,-30), 1);
     }
@@ -78,7 +78,7 @@ public class AlienTest {
     }
 
     @Test
-    public void updateTestSOUTH(){
+    public void updateTestSOUTH() throws Exception{
         alien.setDirection(SOUTH);
         float x = alien.getPosition().x;
         float y = alien.getPosition().y;

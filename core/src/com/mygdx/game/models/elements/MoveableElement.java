@@ -1,6 +1,7 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.world.World;
 
 import java.util.Arrays;
@@ -111,10 +112,10 @@ public abstract class MoveableElement extends Element{
     public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) throws GameException {
         super(w,position, size);
         if(speed <0){
-            throw new GameException('speed is negative');
+            throw new GameException("speed is negative");
         }
-        if(Direction == null){
-            throw new GameException('direction is null');
+        if(direction == null){
+            throw new GameException("direction is null");
         }
         this.speed = speed;
         this.direction = direction;

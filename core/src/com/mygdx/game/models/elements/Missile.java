@@ -2,6 +2,7 @@ package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.world.World;
 import com.mygdx.game.ressources.TexturesRepository;
 
@@ -17,7 +18,7 @@ public class Missile extends MoveableElement {
     private int puissance = 5;
     private float poid = 1f;
 
-    public Missile(World w, Vector2 position, Direction direction)  throws GameException{
+    public Missile(World w, Vector2 position, Direction direction)  throws GameException {
         super(w,position, new Vector2(0.8f,0.8f), speed, direction);
         this.move();
     }

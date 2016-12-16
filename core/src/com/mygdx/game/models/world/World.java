@@ -54,7 +54,7 @@ public class World implements ScreenGameConfig, WorldInterface{
     /**
      * Default constructor
      */
-    public World(){
+    public World() throws GameException{
         this.size = new Vector2(WORLD_WIDTH, WORLD_HEIGHT);
         this.spaceship = new Spaceship(this,new Vector2((this.size.x/2),5));
 
@@ -228,7 +228,7 @@ public class World implements ScreenGameConfig, WorldInterface{
     }
 
 
-    public void addMissile() {
+    public void addMissile() throws GameException{
         if(spaceship.isPowerUp()){
             this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+((spaceship.getSize().x/2f)-1f),spaceship.getPosition().y+(spaceship.getSize().y/2f)), MoveableElement.Direction.NORTH ));
             this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+((spaceship.getSize().x/2f)-1f),spaceship.getPosition().y+(spaceship.getSize().y/2f)), MoveableElement.Direction.NORTHEAST ));
@@ -237,7 +237,7 @@ public class World implements ScreenGameConfig, WorldInterface{
         }else this.elements.add(new Missile(this, new Vector2(spaceship.getPosition().x+((spaceship.getSize().x/2f)-1f),spaceship.getPosition().y+(spaceship.getSize().y/2f)), MoveableElement.Direction.NORTH ));
     }
 
-    public void addMissileAlien(){
+    public void addMissileAlien() throws GameException{
         ArrayList<Element> tmp = new ArrayList<Element>();
         for(Element a : elements){
             if(a instanceof Alien)
@@ -253,7 +253,7 @@ public class World implements ScreenGameConfig, WorldInterface{
     }
 
 
-    public void createAlien() {
+    public void createAlien() throws GameException{
         Alien alien;
         Random rand = new Random();
 
@@ -288,7 +288,7 @@ public class World implements ScreenGameConfig, WorldInterface{
 
 
 
-    private void incrementsAliensdDead(){
+    public void incrementsAliensdDead(){
         this.deadAliens ++;
         if(this.deadAliens >= this.step){
             this.changeLevel();
@@ -332,8 +332,12 @@ public class World implements ScreenGameConfig, WorldInterface{
         return spaceship.getNbKilledAliens();
     }
 
+    public int getDeadAliens() {return deadAliens;}
+
     public int getCounter() {
         return counter;
     }
+
+    public int getStep() {return step;}
 }
 

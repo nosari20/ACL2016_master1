@@ -1,6 +1,7 @@
 package com.mygdx.game.models.elements;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.exceptions.GameException;
 import com.mygdx.game.models.world.World;
 
 import java.util.List;
@@ -17,15 +18,15 @@ public abstract class MortalElement extends MoveableElement {
         isDead = false;
     }
 
-    public MortalElement(World w, Vector2 position, int speed) {
+    public MortalElement(World w, Vector2 position, int speed) throws GameException{
         super(w, position, speed);
     }
 
-    public MortalElement(World w, Vector2 position, Vector2 size, int speed, Direction direction, List<Direction> allowedDirections) {
+    public MortalElement(World w, Vector2 position, Vector2 size, int speed, Direction direction, List<Direction> allowedDirections) throws GameException {
         super(w, position, size, speed, direction, allowedDirections);
     }
 
-    public MortalElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) {
+    public MortalElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) throws GameException {
         super(w, position, size, speed, direction);
     }
     public float getVie(){

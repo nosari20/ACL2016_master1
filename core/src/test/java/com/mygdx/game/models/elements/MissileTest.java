@@ -38,13 +38,13 @@ public class MissileTest {
     public ExpectedException thrown= ExpectedException.none();
 
     @Test
-    public void testConstructeurNull() {
+    public void testConstructeurNull() throws Exception{
         thrown.expect(NullPointerException.class);
         new Missile(null, null, null);
     }
 
     @Test
-    public void testConstructeurHorsMonde() {
+    public void testConstructeurHorsMonde() throws Exception{
         thrown.expect(Exception.class);
         new Missile(this.world, new Vector2(-30,-30), MoveableElement.Direction.SOUTH);
     }
@@ -84,7 +84,7 @@ public class MissileTest {
     }
 
     @Test
-    public void updateTestNorth(){
+    public void updateTestNorth() throws Exception{
         missile.setDirection(NORTH);
         float x = missile.getPosition().x;
         float y = missile.getPosition().y;
@@ -98,7 +98,7 @@ public class MissileTest {
     }
 
     @Test
-    public void updateTestNorthEast() {
+    public void updateTestNorthEast() throws Exception{
         missile.setDirection(NORTHEAST);
         float x = missile.getPosition().x;
         float y = missile.getPosition().y;
@@ -113,7 +113,7 @@ public class MissileTest {
     }
 
     @Test
-    public void updateTestNorthWest() {
+    public void updateTestNorthWest() throws Exception{
         missile.setDirection(NORTHWEST);
         float x = missile.getPosition().x;
         float y = missile.getPosition().y;

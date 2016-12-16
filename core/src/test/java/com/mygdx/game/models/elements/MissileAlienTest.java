@@ -52,7 +52,7 @@ public class MissileAlienTest {
     public ExpectedException thrown= ExpectedException.none();
 
     @Test
-    public void TestNullConstructeur() {
+    public void TestNullConstructeur() throws Exception{
         thrown.expect(NullPointerException.class);
         new MissileAlien(null, null, null);
     }
