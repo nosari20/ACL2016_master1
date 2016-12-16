@@ -12,7 +12,7 @@ public abstract class MortalElement extends MoveableElement {
     protected float vie;
     protected boolean isDead;
 
-    public MortalElement(World w, Vector2 position) {
+    public MortalElement(World w, Vector2 position) throws GameException {
         super(w, position);
         isDead = false;
     }

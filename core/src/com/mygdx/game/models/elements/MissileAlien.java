@@ -11,7 +11,7 @@ public class MissileAlien extends MoveableElement {
     private MissileSource source = MissileSource.ALIEN;
     private int puissance = 5;
 
-    public MissileAlien(World w, Vector2 position, Direction direction) {
+    public MissileAlien(World w, Vector2 position, Direction direction) throws GameException {
         super(w,position, new Vector2(0.8f,0.8f), speed, direction);
         this.move();
     }

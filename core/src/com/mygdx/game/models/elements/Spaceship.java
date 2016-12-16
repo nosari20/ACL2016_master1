@@ -20,7 +20,7 @@ public class Spaceship extends MortalElement {
      *
      * @param position
      */
-    public Spaceship(World w, Vector2 position) {
+    public Spaceship(World w, Vector2 position) throws GameException {
         super(w, position);
         this.setSpeed(SPACESHIP_SPEED);
         this.vie = 100;

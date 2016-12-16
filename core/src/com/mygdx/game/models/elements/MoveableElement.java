@@ -73,7 +73,7 @@ public abstract class MoveableElement extends Element{
      * Default constructor
      * @param position
      */
-    public MoveableElement(World w, Vector2 position) {
+    public MoveableElement(World w, Vector2 position) throws GameException {
         super(w,position);
         this.speed = MoveableElement.DEFAULT_SPEED;
         this.direction = MoveableElement.DEFAULT_INITIAL_DIRECTION;
@@ -85,7 +85,7 @@ public abstract class MoveableElement extends Element{
      * Constructor with speeed
      * @param position
      */
-    public MoveableElement(World w, Vector2 position, int speed) {
+    public MoveableElement(World w, Vector2 position, int speed) throws GameException {
         super(w,position);
         this.speed = speed;
         this.direction = MoveableElement.DEFAULT_INITIAL_DIRECTION;
@@ -97,7 +97,7 @@ public abstract class MoveableElement extends Element{
      * Constructor with all attribute
      * @param position
      */
-    public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction, List<Direction> allowedDirections) {
+    public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction, List<Direction> allowedDirections) throws GameException {
         super(w,position, size);
         this.speed = speed;
         this.direction = direction;
@@ -108,8 +108,14 @@ public abstract class MoveableElement extends Element{
      * Constructor with all attribute
      * @param position
      */
-    public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) {
+    public MoveableElement(World w, Vector2 position, Vector2 size, int speed, Direction direction) throws GameException {
         super(w,position, size);
+        if(speed <0){
+            throw new GameException('speed is negative');
+        }
+        if(Direction == null){
+            throw new GameException('direction is null');
+        }
         this.speed = speed;
         this.direction = direction;
         this.isMoving = false;

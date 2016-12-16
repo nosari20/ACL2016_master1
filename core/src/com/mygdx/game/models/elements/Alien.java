@@ -24,8 +24,11 @@ public class Alien  extends MortalElement {
      *
      * @param position
      */
-    public Alien(World w, Vector2 position, int pattern) {
+    public Alien(World w, Vector2 position, int pattern)  throws GameException{
         super(w, position, new Vector2(2,3), ALIEN_SPEED+w.getLevel(), Direction.NORTH, MoveableElement.DEFAULT_ALLOWED_DIRECTIONS);
+        if(pattern <1 || pattern>5){
+            throw new GameException('pattern <1 or >5');
+        }
         this.move();
         this.nb_pattern = pattern;
         this.changeDirection = true;
