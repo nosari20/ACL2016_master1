@@ -21,23 +21,24 @@ To import to Intellij IDEA: File -> Import -> Folder
 IDE Setting : https://github.com/libgdx/libgdx/wiki/Setting-up-your-Development-Environment-%28Eclipse%2C-Intellij-IDEA%2C-NetBeans%29
 
 
-## TESTS
-```
-gradlew test
-```
-
 ## CLI
 
 ### RUN 
 
 ```
+Windows : 
 gradlew desktop:run
+Linux : 
+./gradlew desktop:run
 ```
 
 ### TESTS
 
 ```
-gradlew test:test
+Windows :
+gradlew core:test
+Linux : 
+./gradlew core:test
 ````
 
 ### CREATE JAR FILE
