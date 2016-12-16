@@ -40,7 +40,7 @@ public class WorldTest {
     }
 
     @Test
-    public void createAlien() {
+    public void createAlien() throws Exception{
         world.createAlien();
         List<Element> elements = world.getElements();
         List<Alien> aliens = new ArrayList<Alien>();
@@ -92,11 +92,9 @@ public class WorldTest {
 
     @Test
     public void testChangeLevel() throws Exception {
-        //System.out.println(world.getStep());
         int step = world.getStep();
         for(int i=0; i<step; i++){
             world.incrementsAliensdDead();
-            System.out.println(world.getStep());
         }
         assertEquals(2, world.getLevel(), 0.001);
 

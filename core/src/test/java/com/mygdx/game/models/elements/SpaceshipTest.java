@@ -27,7 +27,7 @@ public class SpaceshipTest {
     public ExpectedException thrown= ExpectedException.none();
 
     @Test
-    public void TestValeurConstructeur() {
+    public void TestValeurConstructeur() throws Exception{
         assertEquals(new Vector2(7,15), ship.getPosition());
         assertEquals(ship.getSpeed(), 12f, 0.001);
         assertEquals(ship.isMoving(), false);
@@ -37,25 +37,25 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void TestNullConstructeur() {
+    public void TestNullConstructeur() throws Exception{
         thrown.expect(NullPointerException.class);
         new Spaceship(null, null);
     }
 
     @Test
-    public void TestConstructeurHorsMonde() {
+    public void TestConstructeurHorsMonde() throws Exception{
         thrown.expect(Exception.class);
         new Spaceship(world, new Vector2(-30,-30));
     }
 
     @Test
-    public void testConstructeurNull() {
+    public void testConstructeurNull() throws Exception{
         thrown.expect(NullPointerException.class);
         new Spaceship(world, new Vector2(-30,-30));
     }
 
     @Test
-    public void updateTestEAST(){
+    public void updateTestEAST() throws Exception{
         ship.setDirection(EST);
         float x = ship.getPosition().x;
         float y = ship.getPosition().y;
@@ -69,7 +69,7 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void updateTestWEST(){
+    public void updateTestWEST() throws Exception{
         ship.setDirection(WEST);
         float x = ship.getPosition().x;
         float y = ship.getPosition().y;
@@ -83,7 +83,7 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void updateTestNORTH(){
+    public void updateTestNORTH() throws Exception{
         ship.setDirection(NORTH);
         float x = ship.getPosition().x;
         float y = ship.getPosition().y;
@@ -97,7 +97,7 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void updateTestSOUTH(){
+    public void updateTestSOUTH() throws Exception{
         ship.setDirection(SOUTH);
         float x = ship.getPosition().x;
         float y = ship.getPosition().y;
@@ -124,7 +124,7 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void testTouched() {
+    public void testTouched() throws Exception{
         ship.setVie(30);
         ship.touched(20);
 
@@ -132,7 +132,7 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void testTouchedDead() {
+    public void testTouchedDead() throws Exception{
         ship.setVie(30);
         ship.touched(40);
 
