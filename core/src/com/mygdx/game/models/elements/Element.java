@@ -44,7 +44,7 @@ public abstract class Element{
         if(position == null){
             throw new GameException("position is null");
         }else{
-            if(position.x <0 || position.x+this.size.x>w.getWidth() || position.y <0 || position.y+this.size.y>w.getHeight()){
+            if(position.x <0 || position.x+this.size.x>w.getWidth()){
                 throw new GameException("position is out of the world");
             }
         }
@@ -75,7 +75,7 @@ public abstract class Element{
         if(position == null){
             throw new GameException("position is null");
         }else{
-            if(position.x <0 || position.x+size.x>w.getWidth() || position.y <0){
+            if(position.x <0 || position.x+size.x>w.getWidth()){
                 throw new GameException("position is out of the world");
             }
         }
