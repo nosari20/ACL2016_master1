@@ -20,6 +20,8 @@ To import to Intellij IDEA: File -> Import -> Folder
 
 IDE Setting : https://github.com/libgdx/libgdx/wiki/Setting-up-your-Development-Environment-%28Eclipse%2C-Intellij-IDEA%2C-NetBeans%29
 
+#DIAGRAMMES
+https://www.lucidchart.com/invitations/accept/f9f1ba7e-d8f5-4328-8af0-767e33c93419
 
 ## CLI
 
