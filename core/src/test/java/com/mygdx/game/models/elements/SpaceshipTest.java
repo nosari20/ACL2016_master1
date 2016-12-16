@@ -49,9 +49,9 @@ public class SpaceshipTest {
     }
 
     @Test
-    public void testConstructeurNull() throws Exception{
-        thrown.expect(NullPointerException.class);
-        new Spaceship(world, new Vector2(-30,-30));
+    public void testConstructeurWorldNull() throws Exception{
+        thrown.expect(Exception.class);
+        new Spaceship(null, new Vector2(-30,-30));
     }
 
     @Test

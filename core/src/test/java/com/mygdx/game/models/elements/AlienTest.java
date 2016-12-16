@@ -29,7 +29,7 @@ public class AlienTest {
     @Test
     public void TestValeurConstructeur() throws Exception{
         assertEquals(new Vector2(8,10), alien.getPosition());
-        assertEquals(alien.getNb_pattern(), 2);
+        assertEquals(alien.getNb_pattern(), 1);
         assertEquals(alien.getSpeed(), 4f, 0.001);
         assertEquals(alien.isMoving(), true);
         assertEquals(alien.getDirection(), MoveableElement.Direction.NORTH);
