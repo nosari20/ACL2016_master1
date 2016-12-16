@@ -142,31 +142,18 @@ public class World implements ScreenGameConfig, WorldInterface{
     private void manageOuts(ArrayList destroyElement, Element e) {
         Vector2 v = e.getSize();
         //Verifie si l'objet sort du monde
-
-
-        if( e instanceof  Missile){
-            if(e.getPosition().x <= 0 || e.getPosition().x + e.getSize().x >= this.getSize().x){
-
-            }
-            //
-        }
-
-        if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))){
+        if(!worldSurface.overlaps(new Rectangle(e.getPosition().x,e.getPosition().y, v.x, v.y))) {
             //Gdx.app.log("Left the world", "for always");
-            if(e instanceof Spaceship)
-                Gdx.app.log(e.getPosition()+" ", "");
-
-
-            if(e.getPosition().x <= 0)
-                if(e.getClass() == Missile.class)
-                    ((Missile)e).inverseDirection(MoveableElement.Direction.WEST);
-            else if(e.getPosition().x + e.getSize().x >= this.getSize().x)
-                ((Missile)e).inverseDirection(MoveableElement.Direction.EST);
-            else if(!destroyElement.contains(e))
+            if (e instanceof Spaceship)
+                Gdx.app.log(e.getPosition() + " ", "");
+            if (e.getPosition().x <= 0) {
+                if (e.getClass() == Missile.class)
+                    ((Missile) e).inverseDirection(MoveableElement.Direction.WEST);
+            } else if (e.getPosition().x + e.getSize().x >= this.getSize().x) {
+                if (e.getClass() == Missile.class)
+                    ((Missile) e).inverseDirection(MoveableElement.Direction.EST);
+            } else if (!destroyElement.contains(e))
                 destroyElement.add(e);
-
-
-
         }
     }
 
