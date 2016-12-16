@@ -119,12 +119,14 @@ public class World implements ScreenGameConfig, WorldInterface{
             if(e instanceof MoveableElement) {
                 ((MoveableElement) e).update(Gdx.graphics.getDeltaTime());
 
-                //replacement
-                if(e.getPosition().x<0){
-                    e.setPosition(e.getPosition().set(0, e.getPosition().y));
-                }
-                if(e.getPosition().x + e.getSize().x>this.size.x){
-                    e.setPosition(e.getPosition().set(this.size.x - e.getSize().x, e.getPosition().y));
+                if(! (e instanceof Missile || e instanceof MissileAlien  ) {
+                    //replacement
+                    if (e.getPosition().x < 0) {
+                        e.setPosition(e.getPosition().set(0, e.getPosition().y));
+                    }
+                    if (e.getPosition().x + e.getSize().x > this.size.x) {
+                        e.setPosition(e.getPosition().set(this.size.x - e.getSize().x, e.getPosition().y));
+                    }
                 }
             }
             manageCollision(destroyElement, e);
